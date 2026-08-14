@@ -132,9 +132,6 @@ function draw() {
   }
     
   
-  fill(47, 23, 129); 
-  textFont("Arial Black");
-  text(mision, 200, 40);
   barra_sup();
 }
 

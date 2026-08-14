@@ -224,9 +224,6 @@ function draw() {
     dibujarNivelActual();
   }
 
-  fill(47, 23, 129);
-  textFont('Arial Black');
-  text(mision, 200, 40);
   barra_sup();
 
   if (estadoJuego === ESTADOS.PAUSA) dibujarPausa();
