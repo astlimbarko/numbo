@@ -6,7 +6,7 @@ let numAutor = null; // Variable para almacenar el número aleatorio
 // variables de texto del menu
 let play = "Jugar"; // Inicializa con texto predeterminado
 let language = "Idiomas"; // Inicializa con texto predeterminado
-let Authors = "Autores"; // Inicializa con texto predeterminado
+let Authors = "Autor"; // Inicializa con texto predeterminado
 let lang = "qu"; // Variable para determinar el idioma inicial
 
 
@@ -73,7 +73,7 @@ function autores() {
   strokeWeight(5); // Grosor del borde
   fill(255); // Color del relleno del texto
   
-  text('Integrantes:', width / 2, 120);
+  text('Autor:', width / 2, 120);
   
   // Configuración del trazo
   strokeWeight(3); // Grosor de la línea
@@ -87,18 +87,18 @@ function autores() {
   switch (numAutor) {
     case 1:
       autor1 = 'Gonzalo Joaquin Veizaga Justiniano';
-      autor2 = 'Junior Sesario Juanca Acebo';
-      autor3 = 'Hans Eduardo Ribera Morant';
+      autor2 = 'gonzaloveizaga@outlook.com';
+      autor3 = '';
       break;
     case 2:
-      autor1 = 'Junior Sesario Juanca Acebo';
-      autor2 = 'Hans Eduardo Ribera Morant';
-      autor3 = 'Gonzalo Joaquin Veizaga Justiniano';
+      autor1 = 'Gonzalo Joaquin Veizaga Justiniano';
+      autor2 = 'gonzaloveizaga@outlook.com';
+      autor3 = '';
       break;
     case 3:
-      autor1 = 'Hans Eduardo Ribera Morant';
-      autor2 = 'Gonzalo Joaquin Veizaga Justiniano';
-      autor3 = 'Junior Sesario Juanca Acebo';
+      autor1 = 'Gonzalo Joaquin Veizaga Justiniano';
+      autor2 = 'gonzaloveizaga@outlook.com';
+      autor3 = '';
       break;
   }
   
