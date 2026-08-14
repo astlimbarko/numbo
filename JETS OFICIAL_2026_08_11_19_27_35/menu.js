@@ -4,10 +4,9 @@ let imgMenu;
 let numAutor = null; // Variable para almacenar el número aleatorio
 
 // variables de texto del menu
-let play = "Jugar"; // Inicializa con texto predeterminado
-let language = "Idiomas"; // Inicializa con texto predeterminado
-let Authors = "Autor"; // Inicializa con texto predeterminado
-let lang = "qu"; // Variable para determinar el idioma inicial
+let play = traducir('jugar');
+let language = traducir('idiomas');
+let Authors = traducir('autor');
 
 
 // Configurar y dibujar el menú
@@ -56,6 +55,9 @@ function drawTextWithAnimation(texto, x, y) {
 }
 
 function menuPrincipal() {
+  play = traducir('jugar');
+  language = traducir('idiomas');
+  Authors = traducir('autor');
   // Dibujar los textos del menú con animación
   drawTextWithAnimation(play, width / 2, 120);
   drawTextWithAnimation(language, width / 2, 200);
@@ -73,7 +75,7 @@ function autores() {
   strokeWeight(5); // Grosor del borde
   fill(255); // Color del relleno del texto
   
-  text('Autor:', width / 2, 120);
+  text(`${traducir('autor')}:`, width / 2, 120);
   
   // Configuración del trazo
   strokeWeight(3); // Grosor de la línea
@@ -106,7 +108,7 @@ function autores() {
   text(autor2, width / 2, 200);
   text(autor3, width / 2, 240);
   
-  drawTextWithAnimation('Retornar', width / 2, 300);
+  drawTextWithAnimation(traducir('retornar'), width / 2, 300);
 }
 
 function languages() {
@@ -115,7 +117,7 @@ function languages() {
   drawTextWithAnimation('Aymara', width / 2, 160);
   drawTextWithAnimation('Guaraní', width / 2, 200);
   drawTextWithAnimation('Plautdietsch', width / 2, 240);
-  drawTextWithAnimation('Retornar', width / 2, 300);
+  drawTextWithAnimation(traducir('retornar'), width / 2, 300);
 }
 
 // Función para restablecer numAutor al salir de la pantalla de autores
@@ -151,11 +153,11 @@ function checkClicks() {
     if (drawTextWithAnimation('Plautdietsch', width / 2, 240)) {
       if (mouseIsPressed) seleccionarIdioma('Plautdietsch');
     }
-    if (drawTextWithAnimation('Retornar', width / 2, 300)) {
+    if (drawTextWithAnimation(traducir('retornar'), width / 2, 300)) {
       if (mouseIsPressed) regresarMenu();
     }
   } else if (menuOne === 4) {
-    if (drawTextWithAnimation('Retornar', width / 2, 300)) {
+    if (drawTextWithAnimation(traducir('retornar'), width / 2, 300)) {
       if (mouseIsPressed) regresarMenu();
     }
   }

@@ -178,26 +178,37 @@ function dibujarPanelEstado(titulo, lineas) {
 }
 
 function dibujarPausa() {
-  dibujarPanelEstado('PAUSA', [`Nivel: ${nivel}`, `Aciertos: ${Acertadas}`]);
-  dibujarBoton('Continuar', 180, 220, 240, 42);
-  dibujarBoton('Volver al menú', 180, 275, 240, 42);
+  dibujarPanelEstado(traducir('pausa'), [`${traducir('nivel')}: ${nivel}`, `${traducir('aciertos')}: ${Acertadas}`]);
+  dibujarBoton(traducir('continuar'), 180, 220, 240, 42);
+  dibujarBoton(traducir('volverMenu'), 180, 275, 240, 42);
 }
 
 function dibujarNivelCompletado() {
-  dibujarPanelEstado('¡NIVEL COMPLETADO!', [`Completaste el nivel ${nivel}`, `Aciertos: ${Acertadas}`]);
-  dibujarBoton('Siguiente nivel', 180, 245, 240, 50);
+  dibujarPanelEstado(traducir('nivelCompletado'), [
+    traducir('completasteNivel', {nivel}),
+    `${traducir('aciertos')}: ${Acertadas}`
+  ]);
+  dibujarBoton(traducir('siguienteNivel'), 180, 245, 240, 50);
 }
 
 function dibujarVictoria() {
-  dibujarPanelEstado('¡GANASTE!', [`Aciertos: ${Acertadas}`, `Incorrectas: ${Incorrectas}`, `Puntaje: ${Acertadas * 1000}`]);
-  dibujarBoton('Volver a jugar', 180, 235, 240, 42);
-  dibujarBoton('Volver al menú', 180, 285, 240, 42);
+  dibujarPanelEstado(traducir('ganaste'), [
+    `${traducir('aciertos')}: ${Acertadas}`,
+    `${traducir('incorrectas')}: ${Incorrectas}`,
+    `${traducir('puntaje')}: ${Acertadas * 1000}`
+  ]);
+  dibujarBoton(traducir('volverJugar'), 180, 235, 240, 42);
+  dibujarBoton(traducir('volverMenu'), 180, 285, 240, 42);
 }
 
 function dibujarDerrota() {
-  dibujarPanelEstado('PERDISTE', [`Aciertos: ${Acertadas}`, `Incorrectas: ${Incorrectas}`, `Puntaje: ${Acertadas * 1000}`]);
-  dibujarBoton('Reintentar', 180, 235, 240, 42);
-  dibujarBoton('Volver al menú', 180, 285, 240, 42);
+  dibujarPanelEstado(traducir('perdiste'), [
+    `${traducir('aciertos')}: ${Acertadas}`,
+    `${traducir('incorrectas')}: ${Incorrectas}`,
+    `${traducir('puntaje')}: ${Acertadas * 1000}`
+  ]);
+  dibujarBoton(traducir('reintentar'), 180, 235, 240, 42);
+  dibujarBoton(traducir('volverMenu'), 180, 285, 240, 42);
 }
 
 function draw() {

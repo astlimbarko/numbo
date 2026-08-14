@@ -14,16 +14,21 @@ Este archivo resume el avance real del proyecto. Una tarea se marca con `[x]` de
 - [x] Corregir y probar las colisiones principales.
 - [x] Documentar el análisis de velocidad, dificultad y arquitectura.
 
-## En revisión
+## Audio completado
 
-- [ ] Terminar el controlador de audio: música por estado, pausa, silencio, tecla `M`, icono WebP y persistencia.
-- [ ] Confirmar que el menú aparezca inmediatamente y que la música comience con la primera interacción.
-- [ ] Confirmar que el icono muestre una barra roja durante la pausa o cuando el sonido esté silenciado.
-- [ ] Aprobar, crear el commit y publicar los cambios de audio.
+- [x] Controlador de audio: música por estado, pausa, silencio, tecla `M`, icono WebP y persistencia.
+- [x] Menú visible inmediatamente y música desde la primera interacción.
+- [x] Barra roja durante la pausa o cuando el sonido está silenciado.
+- [x] Publicar los cambios de audio en el commit `3d79384`.
 
 ## Pendientes — versión 1
 
-- [ ] Reparar el sistema de idiomas y la codificación de textos.
+### En revisión
+
+- [ ] Centralizar las traducciones de la interfaz.
+- [ ] Seleccionar y recordar español, quechua, aymara, guaraní y plautdietsch.
+- [ ] Traducir menú, pausa, cambio de nivel, victoria y derrota.
+- [ ] Validar visualmente los cinco idiomas y revisar las traducciones con fuentes o hablantes confiables.
 - [ ] Mejorar menús, instrucciones, navegación y legibilidad.
 - [ ] Hacer más prominente el número objetivo de la misión.
 - [ ] Añadir pantalla completa desde menú y pausa.
