@@ -7,6 +7,7 @@ let numAutor = null; // Variable para almacenar el número aleatorio
 let play = traducir('jugar');
 let language = traducir('idiomas');
 let Authors = traducir('autor');
+let instructions = traducir('instrucciones');
 
 
 // Configurar y dibujar el menú
@@ -30,6 +31,9 @@ function drawMenu() {
       break;
     case 4:
       autores();
+      break;
+    case 5:
+      instrucciones();
       break;
   }
 }
@@ -58,10 +62,12 @@ function menuPrincipal() {
   play = traducir('jugar');
   language = traducir('idiomas');
   Authors = traducir('autor');
+  instructions = traducir('instrucciones');
   // Dibujar los textos del menú con animación
-  drawTextWithAnimation(play, width / 2, 120);
-  drawTextWithAnimation(language, width / 2, 200);
-  drawTextWithAnimation(Authors, width / 2, 280);
+  drawTextWithAnimation(play, width / 2, 90);
+  drawTextWithAnimation(language, width / 2, 155);
+  drawTextWithAnimation(instructions, width / 2, 220);
+  drawTextWithAnimation(Authors, width / 2, 285);
 }
 
 function autores() {
@@ -119,6 +125,28 @@ function languages() {
   drawTextWithAnimation('Plautdietsch', width / 2, 240);
   drawTextWithAnimation(traducir('retornar'), width / 2, 300);
 }
+function instrucciones() {
+  fill(255, 255, 255, 225);
+  stroke(45);
+  strokeWeight(2);
+  rect(80, 45, 440, 285, 18);
+  noStroke();
+  fill(40);
+  textAlign(CENTER, CENTER);
+  textFont('Arial Black');
+  textSize(27);
+  text(traducir('controles'), width / 2, 78);
+  textFont('Arial');
+  textSize(18);
+  text(`${traducir('mover')}: A / D  ·  ← / →`, width / 2, 125);
+  text(`${traducir('saltar')}: W  ·  ↑  ·  ESPACIO`, width / 2, 160);
+  text(`${traducir('pausar')}: P  ·  ESC`, width / 2, 195);
+  text(`${traducir('silenciar')}: M`, width / 2, 230);
+  textSize(16);
+  text(traducir('objetivo'), width / 2, 270);
+  drawTextWithAnimation(traducir('retornar'), width / 2, 355);
+}
+
 
 // Función para restablecer numAutor al salir de la pantalla de autores
 function resetAutores() {
@@ -128,13 +156,16 @@ function resetAutores() {
 // Función para manejar los clics del mouse
 function checkClicks() {
   if (menuOne === 2) {
-    if (drawTextWithAnimation(play, width / 2, 120)) {
+    if (drawTextWithAnimation(play, width / 2, 90)) {
       if (mouseIsPressed) iniciarJuego();
     }
-    if (drawTextWithAnimation(language, width / 2, 200)) {
+    if (drawTextWithAnimation(language, width / 2, 155)) {
       if (mouseIsPressed) mostrarIdiomas();
     }
-    if (drawTextWithAnimation(Authors, width / 2, 280)) {
+    if (drawTextWithAnimation(instructions, width / 2, 220)) {
+      if (mouseIsPressed) mostrarInstrucciones();
+    }
+    if (drawTextWithAnimation(Authors, width / 2, 285)) {
       if (mouseIsPressed) mostrarAutores();
     }
   } else if (menuOne === 3) {
@@ -160,6 +191,10 @@ function checkClicks() {
     if (drawTextWithAnimation(traducir('retornar'), width / 2, 300)) {
       if (mouseIsPressed) regresarMenu();
     }
+  } else if (menuOne === 5) {
+    if (drawTextWithAnimation(traducir('retornar'), width / 2, 355)) {
+      if (mouseIsPressed) regresarMenu();
+    }
   }
 }
 
@@ -182,4 +217,9 @@ function mostrarAutores() {
 function regresarMenu() {
   console.log('Regresar al Menú');
   menuOne = 2; // Cambia la variable para regresar al menú principal
+}
+
+function mostrarInstrucciones() {
+  console.log('Mostrar Instrucciones');
+  menuOne = 5;
 }

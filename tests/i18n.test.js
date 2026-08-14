@@ -28,6 +28,9 @@ assert.equal(vm.runInContext("seleccionarIdioma('desconocido')", contexto), fals
 
 for (const idioma of Object.keys(contexto.module.exports.IDIOMAS_NUMBO)) {
   assert.ok(contexto.module.exports.TRADUCCIONES_NUMBO[idioma], `falta catálogo ${idioma}`);
+  for (const clave of ['jugar', 'instrucciones', 'controles', 'objetivo', 'retornar']) {
+    assert.ok(contexto.module.exports.TRADUCCIONES_NUMBO[idioma][clave], `falta ${clave} en ${idioma}`);
+  }
 }
 
 console.log('OK: selección, persistencia, idioma HTML y traducciones verificadas');

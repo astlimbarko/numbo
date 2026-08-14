@@ -13,7 +13,10 @@ const TRADUCCIONES_NUMBO = Object.freeze({
     volverMenu: 'Volver al menú', nivelCompletado: '¡NIVEL COMPLETADO!',
     completasteNivel: 'Completaste el nivel {nivel}', siguienteNivel: 'Siguiente nivel',
     ganaste: '¡GANASTE!', perdiste: 'PERDISTE', incorrectas: 'Incorrectas',
-    puntaje: 'Puntaje', volverJugar: 'Volver a jugar', reintentar: 'Reintentar'
+    puntaje: 'Puntaje', volverJugar: 'Volver a jugar', reintentar: 'Reintentar',
+    instrucciones: 'Instrucciones', controles: 'CONTROLES', mover: 'Mover', saltar: 'Saltar',
+    pausar: 'Pausar o continuar', silenciar: 'Silenciar sonido',
+    objetivo: 'Atrapa la operación que da el número objetivo.'
   },
   qu: {
     jugar: 'Pukllay', idiomas: 'Simikuna', autor: 'Ruwaq', retornar: 'Kutiy',
@@ -21,7 +24,10 @@ const TRADUCCIONES_NUMBO = Object.freeze({
     volverMenu: 'Qallariyman kutiy', nivelCompletado: '¡PATA TUKUSQA!',
     completasteNivel: '{nivel} pata tukusqa', siguienteNivel: 'Qatiq pata',
     ganaste: '¡ATIPANKI!', perdiste: 'CHINKARQANKI', incorrectas: 'Pantaykuna',
-    puntaje: 'Yupay', volverJugar: 'Musuqmanta pukllay', reintentar: 'Musuqmanta'
+    puntaje: 'Yupay', volverJugar: 'Musuqmanta pukllay', reintentar: 'Musuqmanta',
+    instrucciones: 'Kamachiykuna', controles: 'KAMACHIYKUNA', mover: 'Kuyuchiy', saltar: 'Paway',
+    pausar: 'Samay utaq qatiy', silenciar: 'Uyarina upallachiy',
+    objetivo: 'Munay yupayta quq rurayta hap’iy.'
   },
   ay: {
     jugar: 'Anataña', idiomas: 'Arunaka', autor: 'Luriri', retornar: 'Kutt’aña',
@@ -29,7 +35,10 @@ const TRADUCCIONES_NUMBO = Object.freeze({
     volverMenu: 'Qalltawiru kutt’aña', nivelCompletado: '¡PATA TUKUYATA!',
     completasteNivel: '{nivel} pata tukuyata', siguienteNivel: 'Jutiri pata',
     ganaste: '¡ATIPJTAWA!', perdiste: 'CHHAQHTAWA', incorrectas: 'Pantjatanaka',
-    puntaje: 'Jakhuwi', volverJugar: 'Wasitata anataña', reintentar: 'Wasitata yant’aña'
+    puntaje: 'Jakhuwi', volverJugar: 'Wasitata anataña', reintentar: 'Wasitata yant’aña',
+    instrucciones: 'Yatichawinaka', controles: 'APNAQAWINAKA', mover: 'Unxtayaña', saltar: 'Thuqtaña',
+    pausar: 'Samart’aña jan ukax sarantaña', silenciar: 'Uñt’awi amukt’ayaña',
+    objetivo: 'Amtata jakhuwi churki uka lurawi katjaña.'
   },
   gn: {
     jugar: 'Ñembosarái', idiomas: 'Ñe’ẽnguéra', autor: 'Apohára', retornar: 'Jevy',
@@ -37,7 +46,10 @@ const TRADUCCIONES_NUMBO = Object.freeze({
     volverMenu: 'Ejevy menúpe', nivelCompletado: '¡NIVEL OPA!',
     completasteNivel: 'Remohu’ã nivel {nivel}', siguienteNivel: 'Nivel oúva',
     ganaste: '¡REGANA!', perdiste: 'REPERDE', incorrectas: 'Oĩ vaíva',
-    puntaje: 'Puntuación', volverJugar: 'Eñembosarái jey', reintentar: 'Eñeha’ã jey'
+    puntaje: 'Puntuación', volverJugar: 'Eñembosarái jey', reintentar: 'Eñeha’ã jey',
+    instrucciones: 'Ñe’ẽmondo', controles: 'JEPOKUAHA', mover: 'Mýi', saltar: 'Popo',
+    pausar: 'Epytu’u térã ehojey', silenciar: 'Emokirirĩ tyapu',
+    objetivo: 'Ejapyhy tembiapo ome’ẽva papapy ojehekáva.'
   },
   pdt: {
     jugar: 'Spälen', idiomas: 'Sproaken', autor: 'Autor', retornar: 'Trigj',
@@ -45,7 +57,10 @@ const TRADUCCIONES_NUMBO = Object.freeze({
     volverMenu: 'Trigj tom Menü', nivelCompletado: 'STUF JEMAKT!',
     completasteNivel: 'Du hast Stuf {nivel} jemaakt', siguienteNivel: 'Näakste Stuf',
     ganaste: 'DU HAST JEWUNNE!', perdiste: 'DU HAST VELUARE', incorrectas: 'Falsch',
-    puntaje: 'Punkte', volverJugar: 'Noch mol spälen', reintentar: 'Noch mol versäakjen'
+    puntaje: 'Punkte', volverJugar: 'Noch mol spälen', reintentar: 'Noch mol versäakjen',
+    instrucciones: 'Anwiesungen', controles: 'STIERUNG', mover: 'Bewegen', saltar: 'Sprüngen',
+    pausar: 'Pause oder wiedermaken', silenciar: 'Ton utmaken',
+    objetivo: 'Fang de Opgow, dee de Teelnummer jeft.'
   }
 });
 
