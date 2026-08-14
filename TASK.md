@@ -21,19 +21,23 @@ Este archivo resume el avance real del proyecto. Una tarea se marca con `[x]` de
 - [x] Barra roja durante la pausa o cuando el sonido está silenciado.
 - [x] Publicar los cambios de audio en el commit `3d79384`.
 
+## Experiencia completada
+
+- [x] Centralizar y guardar la selección de idiomas.
+- [x] Traducir menú, pausa, cambio de nivel, victoria y derrota.
+- [x] Añadir una pantalla de instrucciones traducida.
+- [x] Mejorar la distribución del menú principal.
+- [x] Destacar el número objetivo de la misión.
+
 ## Pendientes — versión 1
 
 ### En revisión
 
-- [ ] Centralizar las traducciones de la interfaz.
-- [ ] Seleccionar y recordar español, quechua, aymara, guaraní y plautdietsch.
-- [ ] Traducir menú, pausa, cambio de nivel, victoria y derrota.
-- [ ] Validar visualmente los cinco idiomas y revisar las traducciones con fuentes o hablantes confiables.
-- [ ] Mejorar menús, instrucciones, navegación y legibilidad.
-- [ ] Hacer más prominente el número objetivo de la misión.
-- [ ] Añadir pantalla completa desde menú y pausa.
 - [ ] Añadir atajos de pantalla completa y salida con `Esc`.
 - [ ] Mantener resolución lógica de `600 × 400` y proporción `3:2`.
+- [ ] Validar las traducciones con fuentes o hablantes confiables.
+- [ ] Aprobar pantalla completa desde menú y pausa.
+- [ ] Aprobar los atajos `Alt + Enter`, `F11` y salida con `Esc`.
 - [ ] Escalar y centrar el canvas con barras laterales cuando correspondan.
 - [ ] Adaptar mouse, textos y colisiones al escalado.
 - [ ] Analizar y equilibrar la velocidad de los tres niveles.

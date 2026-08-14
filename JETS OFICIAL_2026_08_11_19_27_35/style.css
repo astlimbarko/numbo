@@ -1,7 +1,18 @@
 html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #111;
+}
+body {
+  display: grid;
+  place-items: center;
 }
 canvas {
-  display: block;
+  display: block !important;
+  width: min(100vw, 150vh) !important;
+  height: min(100vh, 66.6667vw) !important;
+  aspect-ratio: 3 / 2;
 }
