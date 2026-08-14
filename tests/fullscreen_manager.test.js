@@ -9,7 +9,8 @@ const gestor = fs.readFileSync(
 
 const entorno = `
 const ESTADOS={MENU:'MENU',PAUSA:'PAUSED',JUGANDO:'PLAY'};
-let estadoJuego=ESTADOS.MENU, mouseX=500, mouseY=20, keyCode=0;
+let estadoJuego=ESTADOS.MENU, menuOne=5, mouseX=500, mouseY=20, keyCode=0;
+function regresarMenu(){menuOne=2;}
 const ESCAPE=27, ENTER=13;
 let solicitudes=0, salidas=0;
 const document={
@@ -28,6 +29,9 @@ if (!mouseSobrePantallaCompleta()) throw new Error('hitbox incorrecta');
 alternarPantallaCompleta();
 Promise.resolve().then(() => {
   if (solicitudes!==1 || !pantallaCompletaActiva()) throw new Error('no entró en pantalla completa');
+  keyCode=ESCAPE; keyPressed();
+  if (menuOne!==2) throw new Error('ESC no cerró las instrucciones');
+  if (!pantallaCompletaActiva() || salidas!==0) throw new Error('ESC salió de pantalla completa antes de cerrar instrucciones');
   keyCode=ESCAPE; keyPressed();
   if (salidas!==1 || pantallaCompletaActiva()) throw new Error('ESC no salió de pantalla completa');
   estadoJuego=ESTADOS.JUGANDO;

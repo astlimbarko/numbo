@@ -140,7 +140,7 @@ function instrucciones() {
   textSize(18);
   text(`${traducir('mover')}: A / D  ·  ← / →`, width / 2, 125);
   text(`${traducir('saltar')}: W  ·  ↑  ·  ESPACIO`, width / 2, 160);
-  text(`${traducir('pausar')}: P  ·  ESC`, width / 2, 195);
+  text(`${traducir('pausar')}: ESC`, width / 2, 195);
   text(`${traducir('silenciar')}: M`, width / 2, 230);
   textSize(16);
   text(traducir('objetivo'), width / 2, 270);

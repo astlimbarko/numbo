@@ -8,6 +8,13 @@ html, body {
 }
 body {
   display: grid;
+html:fullscreen,
+html:fullscreen body {
+  width: 100vw;
+  height: 100vh;
+  background: #111;
+}
+
   place-items: center;
 }
 canvas {

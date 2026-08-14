@@ -74,9 +74,15 @@ mousePressed = function mousePressedConPantallaCompleta() {
 
 const keyPressedSinPantallaCompleta = keyPressed;
 keyPressed = function keyPressedConPantallaCompleta(evento) {
-  if (keyCode === ESCAPE && pantallaCompletaActiva()) {
-    document.exitFullscreen();
-    return false;
+  if (keyCode === ESCAPE) {
+    if (estadoJuego === ESTADOS.MENU && menuOne !== 2) {
+      regresarMenu();
+      return false;
+    }
+    if (pantallaCompletaActiva()) {
+      document.exitFullscreen();
+      return false;
+    }
   }
   if (keyCode === 122 || (keyCode === ENTER && evento && evento.altKey)) {
     alternarPantallaCompleta();

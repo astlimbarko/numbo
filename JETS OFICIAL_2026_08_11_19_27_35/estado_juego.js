@@ -233,7 +233,7 @@ function draw() {
 }
 
 function keyPressed() {
-  if (key === 'p' || key === 'P' || keyCode === ESCAPE) {
+  if (keyCode === ESCAPE) {
     if (estadoJuego === ESTADOS.JUGANDO || estadoJuego === ESTADOS.PAUSA) alternarPausa();
     return false;
   }
