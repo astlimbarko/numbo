@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script src="p5.js?v=20260813-2"></script>
-    <script src="p5.sound.min.js?v=20260813-2"></script>
-    <link rel="stylesheet" type="text/css" href="style.css?v=20260813-1">
+    <link rel="stylesheet" type="text/css" href="style.css?v=20260814-2">
     <meta charset="utf-8" />
 
   </head>
   <body>
+    <div id="p5_loading" class="numbo-loading" role="status" aria-live="polite">
+      <div class="numbo-loading__simbolo numbo-loading__simbolo--uno">+</div>
+      <div class="numbo-loading__simbolo numbo-loading__simbolo--dos">×</div>
+      <div class="numbo-loading__simbolo numbo-loading__simbolo--tres">7</div>
+      <section class="numbo-loading__tarjeta" aria-label="Numbo está cargando">
+        <p class="numbo-loading__superior">Una aventura matemática</p>
+        <h1 class="numbo-loading__logo">NUMBO</h1>
+        <div class="numbo-loading__escena" aria-hidden="true">
+          <div class="numbo-loading__numbi"></div>
+          <div class="numbo-loading__suelo"></div>
+        </div>
+        <p class="numbo-loading__mensaje">Preparando la aventura…</p>
+        <div class="numbo-loading__barra" aria-hidden="true">
+          <span></span>
+        </div>
+        <p class="numbo-loading__operaciones" aria-hidden="true">+ &nbsp; − &nbsp; × &nbsp; ÷</p>
+      </section>
+    </div>
+    <script src="p5.js?v=20260813-2"></script>
+    <script src="p5.sound.min.js?v=20260813-2"></script>
     <main>
     </main>
     <script src="sketch.js?v=20260813-2"></script>

@@ -6,8 +6,6 @@ html, body {
   overflow: hidden;
   background: #111;
 }
-body {
-  display: grid;
 html:fullscreen,
 html:fullscreen body {
   width: 100vw;
@@ -15,6 +13,8 @@ html:fullscreen body {
   background: #111;
 }
 
+body {
+  display: grid;
   place-items: center;
 }
 canvas {
@@ -22,4 +22,170 @@ canvas {
   width: min(100vw, 150vh) !important;
   height: min(100vh, 66.6667vw) !important;
   aspect-ratio: 3 / 2;
+}
+
+.numbo-loading {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.36) 0 3%, transparent 3.5%),
+    radial-gradient(circle at 82% 24%, rgba(255, 255, 255, 0.25) 0 4%, transparent 4.5%),
+    linear-gradient(180deg, #c9f07b 0%, #75d6a0 58%, #30a77f 100%);
+  font-family: Arial, sans-serif;
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+.numbo-loading::after {
+  content: '';
+  position: absolute;
+  right: -8%;
+  bottom: -20%;
+  left: -8%;
+  height: 42%;
+  border-radius: 50% 50% 0 0;
+  background: #238f70;
+  box-shadow: 0 -18px 0 rgba(151, 225, 104, 0.75);
+}
+
+.numbo-loading--lista {
+  opacity: 0;
+  transform: scale(1.035);
+  pointer-events: none;
+}
+
+.numbo-loading__tarjeta {
+  position: relative;
+  z-index: 2;
+  width: min(78vw, 440px);
+  padding: 24px 34px 26px;
+  box-sizing: border-box;
+  text-align: center;
+  border: 4px solid #4d23b4;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 0 #4d23b4, 0 22px 38px rgba(34, 24, 73, 0.25);
+}
+
+.numbo-loading__superior {
+  margin: 0 0 1px;
+  color: #e05281;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.numbo-loading__logo {
+  margin: 0;
+  color: #7134d3;
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: clamp(46px, 10vw, 76px);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-shadow: 0 5px 0 #ffcf37, 0 8px 0 #e05281;
+}
+
+.numbo-loading__escena {
+  position: relative;
+  height: 92px;
+  margin: 12px 0 2px;
+  overflow: hidden;
+}
+
+.numbo-loading__numbi {
+  position: absolute;
+  z-index: 2;
+  bottom: 8px;
+  left: calc(50% - 41px);
+  width: 82px;
+  height: 80px;
+  background: url('img/numbiRun.png') 0 0 / 653px 80px no-repeat;
+  animation: numbo-correr 700ms steps(8) infinite, numbo-rebote 350ms ease-in-out infinite alternate;
+}
+
+.numbo-loading__suelo {
+  position: absolute;
+  right: 8%;
+  bottom: 8px;
+  left: 8%;
+  height: 7px;
+  border-radius: 999px;
+  background: #83cf45;
+  box-shadow: 0 5px 0 #4a9e3b;
+}
+
+.numbo-loading__mensaje {
+  margin: 4px 0 12px;
+  color: #34206f;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.numbo-loading__barra {
+  height: 17px;
+  padding: 3px;
+  overflow: hidden;
+  border: 3px solid #4d23b4;
+  border-radius: 999px;
+  background: #e7e0fb;
+}
+
+.numbo-loading__barra span {
+  display: block;
+  width: 42%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #e05281, #ffcf37, #7134d3);
+  animation: numbo-progreso 900ms ease-in-out infinite alternate;
+}
+
+.numbo-loading__operaciones {
+  margin: 11px 0 0;
+  color: #7134d3;
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 20px;
+}
+
+.numbo-loading__simbolo {
+  position: absolute;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.58);
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: clamp(44px, 8vw, 86px);
+  animation: numbo-flotar 2.2s ease-in-out infinite alternate;
+}
+
+.numbo-loading__simbolo--uno { top: 11%; left: 9%; transform: rotate(-12deg); }
+.numbo-loading__simbolo--dos { top: 17%; right: 10%; animation-delay: -700ms; }
+.numbo-loading__simbolo--tres { right: 16%; bottom: 14%; animation-delay: -1.3s; }
+
+@keyframes numbo-correr {
+  to { background-position: -656px 0; }
+}
+
+@keyframes numbo-rebote {
+  to { transform: translateY(-3px); }
+}
+
+@keyframes numbo-progreso {
+  from { transform: translateX(-12%); }
+  to { transform: translateX(150%); }
+}
+
+@keyframes numbo-flotar {
+  to { translate: 0 -14px; rotate: 8deg; }
+}
+
+@media (max-height: 520px) {
+  .numbo-loading__tarjeta { padding: 12px 28px 16px; transform: scale(0.86); }
+  .numbo-loading__escena { height: 72px; }
+  .numbo-loading__numbi { transform: scale(0.78); transform-origin: bottom center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .numbo-loading *, .numbo-loading { animation: none !important; transition: none !important; }
 }

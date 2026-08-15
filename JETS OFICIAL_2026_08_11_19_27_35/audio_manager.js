@@ -104,6 +104,25 @@ function sincronizarMusica(estadoAnterior, nuevoEstado) {
   }
 }
 
+function reproducirSonidoHoverMenu() {
+  if (!audioDesbloqueado || audioSilenciado || typeof getAudioContext !== 'function') return;
+  const contexto = getAudioContext();
+  if (!contexto || contexto.state !== 'running') return;
+
+  const ahora = contexto.currentTime;
+  const oscilador = contexto.createOscillator();
+  const volumen = contexto.createGain();
+  oscilador.type = 'sine';
+  oscilador.frequency.setValueAtTime(520, ahora);
+  oscilador.frequency.exponentialRampToValueAtTime(680, ahora + 0.055);
+  volumen.gain.setValueAtTime(0.035, ahora);
+  volumen.gain.exponentialRampToValueAtTime(0.001, ahora + 0.07);
+  oscilador.connect(volumen);
+  volumen.connect(contexto.destination);
+  oscilador.start(ahora);
+  oscilador.stop(ahora + 0.075);
+}
+
 function desbloquearAudio() {
   if (audioDesbloqueado) return;
   audioDesbloqueado = true;

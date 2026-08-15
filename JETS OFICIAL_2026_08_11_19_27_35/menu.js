@@ -8,11 +8,14 @@ let play = traducir('jugar');
 let language = traducir('idiomas');
 let Authors = traducir('autor');
 let instructions = traducir('instrucciones');
+let opcionMenuHoverAnterior = null;
+let opcionMenuHoverActual = null;
 
 
 // Configurar y dibujar el menú
 function drawMenu() {
   // Dibujar la imagen de fondo
+  opcionMenuHoverActual = null;
   if (imgMenu) {
     image(imgMenu, 0, 0, width, height);
   }
@@ -36,12 +39,18 @@ function drawMenu() {
       instrucciones();
       break;
   }
+  if (opcionMenuHoverActual !== opcionMenuHoverAnterior && opcionMenuHoverActual !== null) {
+    reproducirSonidoHoverMenu();
+  }
+  opcionMenuHoverAnterior = opcionMenuHoverActual;
+
 }
 
 // Función para dibujar el texto con animación al pasar el mouse
-function drawTextWithAnimation(texto, x, y) {
+function drawTextWithAnimation(texto, x, y, identificador = texto) {
   let overText = mouseX > x - textWidth(texto) / 2 && mouseX < x + textWidth(texto) / 2 && mouseY > y - 25 && mouseY < y + 25;
   
+  if (overText) opcionMenuHoverActual = identificador;
   if (overText) {
     textSize(46);
     stroke(127, 191, 255, 100); // Color del borde al pasar el mouse
