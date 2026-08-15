@@ -35,6 +35,15 @@ El número objetivo aparece integrado en la barra superior, pero no tiene sufici
 1. Revisar la barra superior actual.
 2. Preparar propuestas de jerarquía, posición y estilo.
 3. Comparar las propuestas dentro de los tres mapas.
+
+## Diseño aprobado
+
+- Panel morado redondeado y estable en la esquina superior izquierda.
+- Reutilización del arte transparente existente de `MISIÓN/HALLAR`.
+- Tarjeta amarilla independiente para el número objetivo dinámico.
+- Sombra y borde para mantener contraste sobre los tres mapas.
+- Animación breve únicamente cuando cambia el objetivo.
+- Componente dibujado en p5 para conservar nitidez y evitar un sprite adicional.
 4. Elegir una propuesta con el usuario.
 5. Implementar el componente reutilizable.
 6. Probarlo en ventana normal y pantalla completa.
