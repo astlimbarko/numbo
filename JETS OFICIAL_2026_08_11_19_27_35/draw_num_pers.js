@@ -9,17 +9,21 @@ function Numbii(){
 }
 
 function mapita1(){
-  velocidad = velocidadGeneral;
+  velocidad = velocidadMapaPorEstado(0);
   mapa1();
 }
 
 function mapita2(){
-  velocidad = velocidadGeneral+4;
+  velocidad = velocidadMapaPorEstado(4);
   mapa2();
 }
 
 function mapita3(){
-  velocidad = velocidadGeneral+8;
+  velocidad = velocidadMapaPorEstado(8);
   mapa3();
+}
+
+function velocidadMapaPorEstado(incrementoNivel) {
+  return estadoJuego === ESTADOS.JUGANDO ? velocidadGeneral + incrementoNivel : 0;
 }
 

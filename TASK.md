@@ -42,15 +42,23 @@ Este archivo resume el avance real del proyecto. Una tarea se marca con `[x]` de
 
 ### En revisión
 
-- [ ] Añadir atajos de pantalla completa y salida con `Esc`.
-- [ ] Mantener resolución lógica de `600 × 400` y proporción `3:2`.
+- [x] Añadir atajos de pantalla completa y salida con `Esc`.
+- [x] Mantener resolución lógica de `600 × 400` y proporción `3:2`.
 - [ ] Validar las traducciones con fuentes o hablantes confiables.
-- [ ] Aprobar pantalla completa desde menú y pausa.
+- [x] Aprobar pantalla completa desde menú y pausa.
 - [ ] Aprobar los atajos `Alt + Enter`, `F11` y salida con `Esc`.
-- [ ] Escalar y centrar el canvas con barras laterales cuando correspondan.
-- [ ] Adaptar mouse, textos y colisiones al escalado.
+- [x] Escalar y centrar el canvas con barras laterales cuando correspondan.
+- [x] Adaptar mouse, textos y colisiones al escalado.
+- [x] Aprobar el atajo `F11` para pantalla completa.
+- [x] Analizar la arquitectura global: conservar la estructura actual para tres niveles y refactorizar gradualmente sin una reescritura POO.
+- [x] Aprobar el comportamiento de `Esc`: primero sale de pantalla completa y después responde el juego.
+- [x] Detener el mapa durante pausa, nivel completado, victoria y derrota.
+- [ ] Ajustar la velocidad visual del nivel 3 después de evaluarla.
+- [ ] Ajustar el movimiento de Numbi en el nivel 3.
+- [ ] Diseñar un efecto visual de viento para Numbi en el nivel 3.
+- [ ] Revisar la mezcla de operaciones matemáticas del nivel 3.
+- [ ] Añadir sonido breve al pasar por los cuatro botones del menú principal.
 - [ ] Analizar y equilibrar la velocidad de los tres niveles.
-- [ ] Analizar la arquitectura global y decidir si conviene introducir POO gradualmente.
 - [ ] Revisar mapas, dificultad y progresión entre niveles.
 - [ ] Revisar y optimizar imágenes grandes solamente cuando sea necesario.
 - [ ] Ordenar variables globales, scripts y responsabilidades del código.
