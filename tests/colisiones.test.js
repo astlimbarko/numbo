@@ -10,8 +10,8 @@ const rectangulo = {x: 100, y: 100, w: 80, h: HITBOX_OPERACION_ALTO};
 assert.equal(detectarColisionRectCirculo(rectangulo, {x: 100, y: 100, radio: HITBOX_PERSONAJE_RADIO}), true);
 assert.equal(detectarColisionRectCirculo(rectangulo, {x: 34, y: 100, radio: HITBOX_PERSONAJE_RADIO}), true);
 assert.equal(detectarColisionRectCirculo(rectangulo, {x: 33, y: 100, radio: HITBOX_PERSONAJE_RADIO}), false);
-assert.equal(detectarColisionRectCirculo(rectangulo, {x: 100, y: 46, radio: HITBOX_PERSONAJE_RADIO}), true);
-assert.equal(detectarColisionRectCirculo(rectangulo, {x: 100, y: 45, radio: HITBOX_PERSONAJE_RADIO}), false);
+assert.equal(detectarColisionRectCirculo(rectangulo, {x: 100, y: 39, radio: HITBOX_PERSONAJE_RADIO}), true);
+assert.equal(detectarColisionRectCirculo(rectangulo, {x: 100, y: 38, radio: HITBOX_PERSONAJE_RADIO}), false);
 assert.equal(detectarColisionRectCirculo(rectangulo, {x: 30, y: 30, radio: HITBOX_PERSONAJE_RADIO}), false);
 assert.equal(detectarColisionRectCirculo({x: 0, y: 0, w: 0, h: 0}, {x: 0, y: 0, radio: 0}), true);
 

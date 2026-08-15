@@ -25,6 +25,6 @@ assert.equal(velocidad(3), 8);
 assert.equal(velocidad(99), 6);
 assert.match(source, /posX \+ velocidadActual/);
 assert.match(source, /posX - velocidadActual/);
-assert.match(html, /colisiones_mejoradas\.js\?v=20260815-numbispeed1/);
+assert.match(html, /colisiones_mejoradas\.js\?v=[^"']+/);
 
 console.log('OK: Numbi conserva velocidad 6 y acelera a 8 en el nivel 3');

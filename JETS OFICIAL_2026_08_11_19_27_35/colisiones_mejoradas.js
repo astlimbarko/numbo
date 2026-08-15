@@ -1,5 +1,12 @@
 const HITBOX_PERSONAJE_RADIO = 26;
-const HITBOX_OPERACION_ALTO = 56;
+const HITBOX_OPERACION_ALTO = 70;
+const TAMANO_OPERACION_NORMAL = 56;
+const TAMANO_OPERACION_MINIMO = 40;
+const ANCHO_OPERACION_MAXIMO = 270;
+const SEPARACION_OPERACION = 11;
+const COLOR_OPERANDO_1 = [19, 181, 210];
+const COLOR_OPERADOR = [218, 44, 67];
+const COLOR_OPERANDO_2 = [92, 196, 28];
 
 const VELOCIDAD_NUMBI_POR_NIVEL = Object.freeze({ 1: 6, 2: 6, 3: 8 });
 
@@ -43,48 +50,75 @@ function moveCharacter() {
   if (moverIzquierda && !moverDerecha) posX = Math.max(0, posX - velocidadActual);
 }
 
+function formatearParteOperacion(valor) {
+  return Number(valor) < 0 ? `(${valor})` : String(valor);
+}
+
+function partesDeObstaculo(obstaculo) {
+  if (obstaculo.num1 !== undefined && obstaculo.operador && obstaculo.num2 !== undefined) {
+    return [formatearParteOperacion(obstaculo.num1), obstaculo.operador, formatearParteOperacion(obstaculo.num2)];
+  }
+  return obstaculo.texto.split(' ');
+}
+
+function medirOperacion(partes) {
+  textSize(TAMANO_OPERACION_NORMAL);
+  let anchos = partes.map((parte) => textWidth(parte));
+  let anchoTotal = anchos.reduce((total, ancho) => total + ancho, 0) + SEPARACION_OPERACION * 2;
+  if (anchoTotal > ANCHO_OPERACION_MAXIMO) {
+    const tamanoAdaptado = Math.max(
+      TAMANO_OPERACION_MINIMO,
+      TAMANO_OPERACION_NORMAL * ANCHO_OPERACION_MAXIMO / anchoTotal
+    );
+    textSize(tamanoAdaptado);
+    anchos = partes.map((parte) => textWidth(parte));
+    anchoTotal = anchos.reduce((total, ancho) => total + ancho, 0) + SEPARACION_OPERACION * 2;
+  }
+  return {anchos, anchoTotal};
+}
+
+function dibujarSimboloOperacion(simbolo, x, y, relleno) {
+  stroke(18, 14, 25, 145);
+  strokeWeight(9);
+  fill(18, 14, 25, 145);
+  text(simbolo, x + 5, y + 6);
+
+  stroke(255);
+  strokeWeight(10);
+  fill(relleno[0], relleno[1], relleno[2]);
+  text(simbolo, x, y);
+
+  stroke(24, 20, 31);
+  strokeWeight(2);
+  fill(relleno[0], relleno[1], relleno[2]);
+  text(simbolo, x, y);
+}
+
 function mostrarObstaculo(obstaculo) {
   push();
-  textSize(50);
-  textFont('Arial');
-  strokeWeight(5);
-  stroke(0, 0, 0, 100);
+  textFont('Arial Black');
   textAlign(LEFT, CENTER);
 
-  const partes = obstaculo.texto.split(' ');
+  const partes = partesDeObstaculo(obstaculo);
   const num1 = partes[0];
   const operador = partes[1];
   const num2 = partes[2];
-  const separacion = 10;
-  const anchoNum1 = textWidth(num1);
-  const anchoOperador = textWidth(operador);
-  const anchoNum2 = textWidth(num2);
-  const anchoTotal = anchoNum1 + anchoOperador + anchoNum2 + separacion * 2;
+  const medida = medirOperacion(partes);
+  const [anchoNum1, anchoOperador] = medida.anchos;
+  const anchoTotal = medida.anchoTotal;
 
   obstaculo.hitbox = {
     x: obstaculo.x + anchoTotal / 2,
     y: obstaculo.y,
-    w: anchoTotal,
+    w: anchoTotal + 12,
     h: HITBOX_OPERACION_ALTO
   };
 
-  const operadorX = obstaculo.x + anchoNum1 + separacion;
-  const num2X = operadorX + anchoOperador + separacion;
-
-  fill(obstaculo.colorNum1);
-  text(num1, obstaculo.x, obstaculo.y);
-  fill(0, 50);
-  text(num1, obstaculo.x + 5, obstaculo.y + 5);
-
-  fill(obstaculo.colorOperador);
-  text(operador, operadorX, obstaculo.y);
-  fill(0, 50);
-  text(operador, operadorX + 5, obstaculo.y + 5);
-
-  fill(obstaculo.colorNum2);
-  text(num2, num2X, obstaculo.y);
-  fill(0, 50);
-  text(num2, num2X + 5, obstaculo.y + 5);
+  const operadorX = obstaculo.x + anchoNum1 + SEPARACION_OPERACION;
+  const num2X = operadorX + anchoOperador + SEPARACION_OPERACION;
+  dibujarSimboloOperacion(num1, obstaculo.x, obstaculo.y, COLOR_OPERANDO_1);
+  dibujarSimboloOperacion(operador, operadorX, obstaculo.y, COLOR_OPERADOR);
+  dibujarSimboloOperacion(num2, num2X, obstaculo.y, COLOR_OPERANDO_2);
   pop();
 }
 

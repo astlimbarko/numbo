@@ -36,10 +36,12 @@ Una tarea se marca `[X]` solamente cuando fue implementada, probada, aprobada y 
 
 ## Version 1 - Siguiente tarea
 
-[ ] Analizar y mejorar la visibilidad de las operaciones matematicas sin afectar la estabilidad
+[X] Mejorar la visibilidad de todas las operaciones con paleta fija, contornos, sombra y tamano adaptable
 
 ## Version 1 - Jugabilidad y equilibrio
 
+[ ] Definir en las especificaciones porcentajes y rangos de la progresion matematica por nivel
+[ ] Implementar nivel 1 solo con sumas; nivel 2 con sumas, restas y algunos negativos; nivel 3 con suma, resta, negativos y apariciones ocasionales de multiplicacion y division
 [ ] Probar y equilibrar la velocidad definitiva de los tres niveles
 [ ] Revisar frecuencia, legibilidad y dificultad de las operaciones por nivel
 [ ] Revisar mapas, parallax, transiciones y requisitos para completar cada nivel

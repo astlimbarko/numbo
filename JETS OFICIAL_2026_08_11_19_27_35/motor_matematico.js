@@ -165,12 +165,12 @@ function generarObstaculo() {
   obstaculos.push({
     x: width,
     y: random(height / 2 - 100, height / 2 + 100),
+    num1: operacion.num1,
+    operador: operacion.operador,
+    num2: operacion.num2,
     texto: operacion.texto,
     resultado: operacion.resultado,
     esCorrecta: operacion.esCorrecta,
-    colorNum1: color(random(255), random(255), random(255)),
-    colorNum2: color(random(255), random(255), random(255)),
-    colorOperador: color(random(255), random(255), random(255)),
     colisionada: false
   });
 }
