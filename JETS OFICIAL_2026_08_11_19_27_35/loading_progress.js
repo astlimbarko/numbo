@@ -45,26 +45,27 @@ function registrarRecursoCarga(cargar, argumentos) {
   return cargar(...parametros);
 }
 
-const cargarImagenSinProgreso = loadImage;
-loadImage = function cargarImagenConProgreso(...argumentos) {
-  return registrarRecursoCarga(cargarImagenSinProgreso, argumentos);
-};
-
-const cargarAudioSinProgreso = loadSound;
-loadSound = function cargarAudioConProgreso(...argumentos) {
-  return registrarRecursoCarga(cargarAudioSinProgreso, argumentos);
-};
-
 const preloadSinProgreso = preload;
 preload = function preloadConProgreso() {
+  const cargarImagenSinProgreso = loadImage;
+  const cargarAudioSinProgreso = loadSound;
   recursosCargaTotales = 0;
   recursosCargaCompletados = 0;
+  loadImage = function cargarImagenConProgreso(...argumentos) {
+    return registrarRecursoCarga(cargarImagenSinProgreso, argumentos);
+  };
+  loadSound = function cargarAudioConProgreso(...argumentos) {
+    return registrarRecursoCarga(cargarAudioSinProgreso, argumentos);
+  };
+
   registrandoRecursosCarga = true;
   actualizarProgresoCarga();
   try {
     preloadSinProgreso();
   } finally {
     registrandoRecursosCarga = false;
+    loadImage = cargarImagenSinProgreso;
+    loadSound = cargarAudioSinProgreso;
     actualizarProgresoCarga();
   }
 };

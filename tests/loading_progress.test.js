@@ -13,6 +13,8 @@ assert.doesNotMatch(css, /numbo-progreso 900ms/, 'la barra todavía usa la anima
 assert.match(progress, /recursosCargaCompletados\s*\/\s*recursosCargaTotales/, 'el porcentaje no se calcula con recursos reales');
 assert.match(progress, /loadImage\s*=\s*function cargarImagenConProgreso/, 'las imágenes no se contabilizan');
 assert.match(progress, /loadSound\s*=\s*function cargarAudioConProgreso/, 'los audios no se contabilizan');
+assert.match(progress, /preloadConProgreso[\s\S]*loadImage\s*=\s*function cargarImagenConProgreso/, 'el contador se instala antes de que p5 registre sus funciones');
+assert.match(progress, /loadImage\s*=\s*cargarImagenSinProgreso/, 'la función original de imágenes no se restaura');
 assert.match(progress, /aria-valuenow/, 'el progreso accesible no se actualiza');
 
 console.log('OK: porcentaje real de imágenes y audios verificado');
