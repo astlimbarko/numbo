@@ -3,7 +3,8 @@ const recursosCargados = {
   niveles: {1: false, 2: false, 3: false}
 };
 
-let cargaRecursosActiva = null;
+const cargasNivelActivas = {1: null, 2: null, 3: null};
+let temporizadorPrecarga = null;
 let mensajeCargaRecursos = '';
 let errorCargaRecursos = '';
 
@@ -88,13 +89,16 @@ function cargarRecursosMapa3() {
   ]);
 }
 
-async function cargarRecursosParaNivel(numeroNivel) {
+async function cargarRecursosParaNivel(numeroNivel, opciones = {}) {
   if (recursosCargados.niveles[numeroNivel]) return;
-  if (cargaRecursosActiva) return cargaRecursosActiva;
+  if (cargasNivelActivas[numeroNivel]) return cargasNivelActivas[numeroNivel];
 
-  mensajeCargaRecursos = `Preparando nivel ${numeroNivel}`;
-  errorCargaRecursos = '';
-  cargaRecursosActiva = (async () => {
+  if (!opciones.enSegundoPlano) {
+    mensajeCargaRecursos = `Preparando nivel ${numeroNivel}`;
+    errorCargaRecursos = '';
+  }
+
+  cargasNivelActivas[numeroNivel] = (async () => {
     await cargarRecursosComunes();
     if (numeroNivel === 1) await cargarRecursosMapa1();
     else if (numeroNivel === 2) await cargarRecursosMapa2();
@@ -104,10 +108,28 @@ async function cargarRecursosParaNivel(numeroNivel) {
   })();
 
   try {
-    await cargaRecursosActiva;
+    await cargasNivelActivas[numeroNivel];
   } finally {
-    cargaRecursosActiva = null;
+    cargasNivelActivas[numeroNivel] = null;
   }
+}
+
+async function precargarNivelesSiguientes(nivelActual) {
+  for (let numeroNivel = nivelActual + 1; numeroNivel <= 3; numeroNivel++) {
+    try {
+      await cargarRecursosParaNivel(numeroNivel, {enSegundoPlano: true});
+    } catch (error) {
+      console.warn(`No se pudo precargar el nivel ${numeroNivel}`, error);
+    }
+  }
+}
+
+function programarPrecargaNiveles(nivelActual) {
+  if (temporizadorPrecarga !== null) return;
+  temporizadorPrecarga = setTimeout(() => {
+    temporizadorPrecarga = null;
+    precargarNivelesSiguientes(nivelActual);
+  }, 800);
 }
 
 function dibujarCargaRecursos() {

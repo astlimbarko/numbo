@@ -62,6 +62,7 @@ async function iniciarPartidaNueva() {
     reiniciarPartida();
     menuOne = 1;
     cambiarEstado(ESTADOS.JUGANDO);
+    programarPrecargaNiveles(1);
   } catch (error) {
     errorCargaRecursos = error.message;
     console.error(error);
