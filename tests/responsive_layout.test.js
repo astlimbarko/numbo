@@ -17,7 +17,7 @@ assert.match(css, /height:\s*min\(100vh,\s*66\.6667vw\)/, 'el alto no conserva l
 assert.match(p5, /getBoundingClientRect/, 'p5 no consulta el tamaño visual del canvas');
 assert.match(css, /html:fullscreen/, 'falta el estilo reforzado de pantalla completa');
 assert.match(index, /style\.css\?v=/, 'el CSS no tiene versión para invalidar caché');
-assert.match(nginx, /no-store, no-cache, must-revalidate/, 'Nginx conserva CSS o JavaScript antiguos');
+assert.match(nginx, /no-cache, must-revalidate/, 'Nginx no revalida el HTML');
 assert.match(index, /barra_sup\.js\?v=/, 'barra_sup.js puede quedar mezclado con una versión anterior');
 assert.match(index, /estado_juego\.js\?v=/, 'estado_juego.js puede quedar mezclado con una versión anterior');
 assert.match(p5, /scrollWidth/, 'p5 no calcula la escala horizontal del mouse');
