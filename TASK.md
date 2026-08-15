@@ -1,89 +1,111 @@
-# Tareas de Numbo
+# Ruta de trabajo de Numbo
 
-Este archivo resume el avance real del proyecto. Una tarea se marca con `[x]` después de implementarla, probarla, aprobarla y publicarla en GitHub. Las tareas en revisión permanecen con `[ ]`.
+Este es el checklist operativo y actualizado del proyecto. `PLAN_TRABAJO.md` conserva el plan inicial como referencia historica; las especificaciones detalladas estan en `docs/specs/`.
 
-## Completadas
+Una tarea se marca `[X]` solamente cuando fue implementada, probada, aprobada y guardada en Git. Las tareas se trabajan de una en una.
 
-- [x] Crear el repositorio independiente de Numbo y publicar la versión inicial.
-- [x] Crear Docker y levantar el juego en `http://127.0.0.1:8080`.
-- [x] Documentar la ruta de trabajo y las especificaciones.
-- [x] Usar `p5.js` y `p5.sound` localmente.
-- [x] Usar la distribución minimizada de `p5.js` para acelerar la carga web.
-- [x] Activar compresión y caché segura para la publicación web.
-- [x] Comprimir las músicas largas conservando formato, duración y calidad adecuada.
-- [x] Optimizar la imagen de la copa conservando PNG, transparencia y calidad de visualización.
-- [x] Mostrar progreso real de imágenes y audios durante la bienvenida.
-- [x] Crear el panel profesional `MISIÓN — HALLAR — número` aprobado.
-- [x] Actualizar la información del autor.
-- [x] Organizar los estados del juego y el reinicio de partida.
-- [x] Corregir y probar el motor matemático.
-- [x] Corregir y probar las colisiones principales.
-- [x] Documentar el análisis de velocidad, dificultad y arquitectura.
+## Version 1 - Base terminada
 
-## Audio completado
+[X] Crear un repositorio independiente y trabajar en una rama de desarrollo
+[X] Crear Docker y levantar el juego en `http://127.0.0.1:8080`
+[X] Mantener p5.js y p5.sound locales y usar p5.js minimizado
+[X] Activar compresion y cache para la version web
+[X] Optimizar musica, copa y carga inicial con progreso real
+[X] Mantener resolucion logica de 600 x 400 y proporcion 3:2
+[X] Escalar y centrar el canvas con barras laterales
+[X] Adaptar mouse, textos y colisiones al escalado
+[X] Implementar pantalla completa desde menu y pausa
+[X] Implementar F11, Alt + Enter y salida escalonada con Esc
+[X] Crear estados claros, reinicio, pausa, victoria y derrota
+[X] Detener mapas, movimiento y colisiones fuera de la partida activa
+[X] Corregir el motor matematico y sus pruebas automaticas
+[X] Corregir colisiones, hitboxes y controles principales
+[X] Centralizar idiomas y recordar la seleccion
+[X] Traducir menu, controles, pausa, niveles, victoria y derrota
+[X] Crear la bienvenida que habilita audio con clic, Enter o Espacio
+[X] Centralizar musica, efectos, pausa, silencio y tecla M
+[X] Crear sonidos de hover del menu y entrada en pausa
+[X] Crear el panel profesional MISION - HALLAR - numero
+[X] Redisenar el panel de Controles y abrirlo con Esc desde el menu
+[X] Crear la sombra fija de Numbi sobre el suelo
+[X] Ajustar el mapa y la velocidad de Numbi en el nivel 3
+[X] Crear efectos de viento ambiental y de movimiento en el nivel 3
+[X] Mezclar operaciones del nivel 3 y reducir operandos gigantes
+[X] Crear accesos directos `?testLevel=1`, `2` y `3`
+[X] Conservar la arquitectura actual y planificar una refactorizacion gradual sin reescritura POO
 
-- [x] Controlador de audio: música por estado, pausa, silencio, tecla `M`, icono WebP y persistencia.
-- [x] Menú visible inmediatamente y música desde la primera interacción.
-- [x] Barra roja durante la pausa o cuando el sonido está silenciado.
-- [x] Publicar los cambios de audio en el commit `3d79384`.
+## Version 1 - Siguiente tarea
 
-## Experiencia completada
+[ ] Analizar y mejorar la visibilidad de las operaciones matematicas sin afectar la estabilidad
 
-- [x] Centralizar y guardar la selección de idiomas.
-- [x] Traducir menú, pausa, cambio de nivel, victoria y derrota.
-- [x] Añadir una pantalla de instrucciones traducida.
-- [x] Mejorar la distribución del menú principal.
-- [x] Destacar el número objetivo de la misión.
-- [x] Anadir y aprobar una bienvenida que habilita el audio con clic, `Enter` o `Espacio`.
-- [x] Redisenar y aprobar el panel de Controles traducido y accesible mediante `Esc`.
-- [x] Añadir una sombra fija en el suelo debajo del personaje.
-- [x] Aumentar la velocidad visual del escenario del nivel 3 sin alterar su dificultad lógica.
-- [x] Añadir accesos directos de desarrollo para probar los niveles mediante `?testLevel=1`, `2` o `3`.
+## Version 1 - Jugabilidad y equilibrio
 
-## Pendientes — versión 1
+[ ] Probar y equilibrar la velocidad definitiva de los tres niveles
+[ ] Revisar frecuencia, legibilidad y dificultad de las operaciones por nivel
+[ ] Revisar mapas, parallax, transiciones y requisitos para completar cada nivel
+[ ] Completar manualmente los niveles 1, 2 y 3, incluyendo victoria, derrota y reinicio
+[ ] Decidir si Numbo guardara el progreso de niveles
 
-### En revisión
+## Version 1 - Interfaz y accesibilidad
 
-- [x] Añadir atajos de pantalla completa y salida con `Esc`.
-- [x] Mantener resolución lógica de `600 × 400` y proporción `3:2`.
-- [ ] Validar las traducciones con fuentes o hablantes confiables.
-- [x] Aprobar pantalla completa desde menú y pausa.
-- [ ] Aprobar los atajos `Alt + Enter`, `F11` y salida con `Esc`.
-- [x] Escalar y centrar el canvas con barras laterales cuando correspondan.
-- [x] Adaptar mouse, textos y colisiones al escalado.
-- [x] Aprobar el atajo `F11` para pantalla completa.
-- [x] Analizar la arquitectura global: conservar la estructura actual para tres niveles y refactorizar gradualmente sin una reescritura POO.
-- [x] Aprobar el comportamiento de `Esc`: primero sale de pantalla completa y después responde el juego.
-- [x] Detener el mapa durante pausa, nivel completado, victoria y derrota.
-- [x] Ajustar y aprobar la velocidad visual del nivel 3.
-- [x] Aumentar y aprobar la velocidad de Numbi en el nivel 3.
-- [x] Diseñar y aprobar efectos de viento ambiental y de movimiento para Numbi en el nivel 3.
-- [x] Aprobar la mezcla de operaciones matemáticas del nivel 3 y reducir 25% el peso de operandos de tres cifras.
-- [ ] Analizar y mejorar la visibilidad de las operaciones matemáticas sobre los tres mapas.
-- [x] Añadir y aprobar un sonido brillante al pasar por los cuatro botones del menú principal.
-- [x] Añadir y aprobar un sonido brillante al entrar en pausa.
-- [ ] Analizar y equilibrar la velocidad de los tres niveles.
-- [ ] Revisar mapas, dificultad y progresión entre niveles.
-- [ ] Revisar y optimizar imágenes grandes solamente cuando sea necesario.
-- [ ] Ordenar variables globales, scripts y responsabilidades del código.
-- [ ] Completar pruebas manuales y automáticas de los tres niveles.
-- [ ] Probar el juego completo sin Internet y sin errores de consola.
-- [ ] Preparar la publicación web.
-- [ ] Empaquetar la versión estable con Tauri como `.exe`/`.msi`.
+[ ] Validar las traducciones con hablantes o fuentes confiables
+[ ] Revisar textos largos y caracteres en los cinco idiomas
+[ ] Completar navegacion del menu mediante teclado y estados visibles de seleccion
+[ ] Revisar contraste y no depender solamente del color para comunicar resultados
+[ ] Evaluar un control de volumen independiente ademas del boton de silencio
 
-## Pendientes — versión 2
+## Version 1 - Arquitectura y mantenimiento
 
-- [ ] Diseñar el control del personaje mediante gestos de la mano.
-- [ ] Evaluar MediaPipe en JavaScript para manos y rostro.
-- [ ] Diseñar la integración opcional de la cámara con el fondo del juego.
-- [ ] Definir privacidad, permisos, calibración y alternativa mediante teclado.
+[ ] Auditar variables globales, archivos y dependencias por orden de carga
+[ ] Eliminar variables, funciones y comentarios obsoletos de forma gradual
+[ ] Separar configuracion, estado, renderizado y logica donde aporte estabilidad
+[ ] Sustituir numeros magicos importantes por constantes configurables
+[ ] Anadir formateo y analisis estatico de JavaScript cuando el codigo este preparado
+[ ] Optimizar imagenes adicionales solamente si una medicion demuestra que es necesario
 
-## Mantenimiento del entorno
+## Version 1 - Pruebas finales
 
-- [ ] Diagnosticar y corregir de forma segura los permisos ACL de Windows en la carpeta del proyecto.
+[ ] Crear el checklist manual definitivo por pantalla y nivel
+[ ] Probar todos los idiomas, audio, silencio, pausa y pantalla completa
+[ ] Probar HD, Full HD, pantallas pequenas y cambios de tamano
+[ ] Probar el juego completamente sin Internet
+[ ] Reconstruir Docker desde cero y verificar todos los recursos HTTP
+[ ] Completar los tres niveles sin bloqueos ni errores de consola
 
-## Regla de entrega
+## Version 1 - Publicacion web
 
-- [x] Trabajar una modificación a la vez.
-- [x] Probar cada modificación en Docker.
-- [x] Esperar la aprobación del usuario antes de hacer commit y push.
+[ ] Preparar una compilacion web limpia y versionada
+[ ] Anadir titulo, descripcion, icono y metadatos web
+[ ] Elegir el servicio de alojamiento
+[ ] Publicar una version de prueba y verificarla en navegadores principales
+[ ] Documentar despliegue, actualizacion y recuperacion de una version
+[ ] Crear una etiqueta Git para la primera version estable
+
+## Version de escritorio - Despues de publicar la web
+
+[ ] Instalar y verificar Rust, Cargo, WebView2 y requisitos de Windows
+[ ] Integrar Tauri conservando una sola base de codigo
+[ ] Configurar nombre, version, identificador, ventana e iconos
+[ ] Verificar p5.js, audio, almacenamiento y funcionamiento sin Internet
+[ ] Generar y probar instaladores `.exe` y `.msi`
+[ ] Documentar nuevas compilaciones y evaluar firma digital
+
+## Version 2 - Camara, gestos y dispositivos moviles
+
+[ ] Disenar el control de Numbi mediante gestos de la mano
+[ ] Evaluar MediaPipe en JavaScript para manos y rostro
+[ ] Disenar la integracion opcional de la camara con el fondo
+[ ] Definir privacidad, permisos, calibracion y alternativa mediante teclado
+[ ] Disenar controles tactiles y evaluar una futura version Android
+
+## Entorno de desarrollo
+
+[ ] Diagnosticar y corregir de forma segura los permisos ACL de Windows
+
+## Regla permanente de entrega
+
+[X] Trabajar una microtarea por vez
+[X] Probar cada cambio en Docker
+[X] Esperar aprobacion antes de hacer commit
+[X] Crear commits pequenos y descriptivos
+[X] Trabajar fuera de `main` durante el desarrollo
