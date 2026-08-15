@@ -35,6 +35,7 @@ Este archivo resume el avance real del proyecto. Una tarea se marca con `[x]` de
 - [x] Mejorar la distribución del menú principal.
 - [x] Destacar el número objetivo de la misión.
 - [x] Añadir una sombra fija en el suelo debajo del personaje.
+- [x] Aumentar la velocidad visual del escenario del nivel 3 sin alterar su dificultad lógica.
 
 ## Pendientes — versión 1
 
