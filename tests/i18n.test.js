@@ -28,7 +28,7 @@ assert.equal(vm.runInContext("seleccionarIdioma('desconocido')", contexto), fals
 
 for (const idioma of Object.keys(contexto.module.exports.IDIOMAS_NUMBO)) {
   assert.ok(contexto.module.exports.TRADUCCIONES_NUMBO[idioma], `falta catálogo ${idioma}`);
-  for (const clave of ['jugar', 'instrucciones', 'controles', 'objetivo', 'retornar']) {
+  for (const clave of ['jugar', 'instrucciones', 'controles', 'mover', 'saltar', 'pausar', 'silenciar', 'controlPausa', 'controlSonido', 'teclaEspacio', 'objetivo', 'retornar']) {
     assert.ok(contexto.module.exports.TRADUCCIONES_NUMBO[idioma][clave], `falta ${clave} en ${idioma}`);
   }
 }

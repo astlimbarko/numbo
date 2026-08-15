@@ -134,26 +134,39 @@ function languages() {
   drawTextWithAnimation('Plautdietsch', width / 2, 240);
   drawTextWithAnimation(traducir('retornar'), width / 2, 300);
 }
+function dibujarTeclaControl(etiqueta, x, y, ancho = 38) {
+  push(); stroke(65, 29, 125); strokeWeight(3); fill(255, 211, 54);
+  rect(x, y - 18, ancho, 36, 8); noStroke(); fill(61, 27, 113);
+  textAlign(CENTER, CENTER); textFont('Arial Black');
+  textSize(etiqueta.length > 4 ? 12 : 18); text(etiqueta, x + ancho / 2, y + 1); pop();
+}
+function dibujarEtiquetaControl(etiqueta, y) {
+  noStroke(); fill(255); textAlign(RIGHT, CENTER); textFont('Arial Black');
+  textSize(16); text(etiqueta, 205, y);
+}
 function instrucciones() {
-  fill(255, 255, 255, 225);
-  stroke(45);
-  strokeWeight(2);
-  rect(80, 45, 440, 285, 18);
-  noStroke();
-  fill(40);
-  textAlign(CENTER, CENTER);
-  textFont('Arial Black');
-  textSize(27);
-  text(traducir('controles'), width / 2, 78);
-  textFont('Arial');
-  textSize(18);
-  text(`${traducir('mover')}: A / D  ·  ← / →`, width / 2, 125);
-  text(`${traducir('saltar')}: W  ·  ↑  ·  ESPACIO`, width / 2, 160);
-  text(`${traducir('pausar')}: ESC`, width / 2, 195);
-  text(`${traducir('silenciar')}: M`, width / 2, 230);
-  textSize(16);
-  text(traducir('objetivo'), width / 2, 270);
-  drawTextWithAnimation(traducir('retornar'), width / 2, 355);
+  stroke(63, 28, 116); strokeWeight(5); fill(105, 38, 180);
+  rect(65, 58, 470, 324, 22);
+  noStroke(); fill(139, 55, 218); rect(82, 70, 436, 52, 15);
+  fill(255); textAlign(CENTER, CENTER); textFont('Arial Black'); textSize(28);
+  text(traducir('controles'), width / 2, 96);
+  dibujarEtiquetaControl(traducir('mover'), 145);
+  dibujarTeclaControl('A', 225, 145); dibujarTeclaControl('D', 272, 145);
+  dibujarTeclaControl('←', 335, 145); dibujarTeclaControl('→', 382, 145);
+  dibujarEtiquetaControl(traducir('saltar'), 192);
+  dibujarTeclaControl('W', 225, 192); dibujarTeclaControl('↑', 272, 192);
+  dibujarTeclaControl(traducir('teclaEspacio'), 335, 192, 100);
+  dibujarEtiquetaControl(traducir('controlPausa'), 239);
+  dibujarTeclaControl('ESC', 225, 239, 62);
+  dibujarEtiquetaControl(traducir('controlSonido'), 286);
+  dibujarTeclaControl('M', 225, 286);
+  noStroke(); fill(235, 222, 255); textAlign(CENTER, CENTER); textFont('Arial');
+  textSize(14); text(traducir('objetivo'), width / 2, 322);
+  const sobreRetornar = mouseX >= 225 && mouseX <= 375 && mouseY >= 341 && mouseY <= 373;
+  stroke(51, 24, 95); strokeWeight(2);
+  fill(sobreRetornar ? color(255, 224, 92) : color(255, 211, 54));
+  rect(225, 341, 150, 32, 9); noStroke(); fill(61, 27, 113);
+  textFont('Arial Black'); textSize(15); text(traducir('retornar'), width / 2, 357);
 }
 
 
@@ -201,7 +214,8 @@ function checkClicks() {
       if (mouseIsPressed) regresarMenu();
     }
   } else if (menuOne === 5) {
-    if (drawTextWithAnimation(traducir('retornar'), width / 2, 355)) {
+    const sobreRetornar = mouseX >= 225 && mouseX <= 375 && mouseY >= 341 && mouseY <= 373;
+    if (sobreRetornar) {
       if (mouseIsPressed) regresarMenu();
     }
   }

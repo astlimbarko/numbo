@@ -11,6 +11,7 @@ const entorno = `
 const ESTADOS={MENU:'MENU',PAUSA:'PAUSED',JUGANDO:'PLAY'};
 let estadoJuego=ESTADOS.MENU, menuOne=5, mouseX=500, mouseY=20, keyCode=0;
 function regresarMenu(){menuOne=2;}
+function mostrarInstrucciones(){menuOne=5;}
 const ESCAPE=27, ENTER=13;
 let solicitudes=0, salidas=0;
 const document={
@@ -36,6 +37,10 @@ Promise.resolve().then(() => {
   if (salidas!==1 || pantallaCompletaActiva()) throw new Error('ESC no salió de pantalla completa');
   estadoJuego=ESTADOS.JUGANDO;
   if (controlPantallaCompletaVisible()) throw new Error('control visible durante la partida');
+  estadoJuego=ESTADOS.MENU; menuOne=2;
+  keyCode=ESCAPE; keyPressed();
+  if (menuOne!==5) throw new Error('ESC no abrió los controles desde el menú principal');
+  keyCode=65; keyPressed(); if (menuOne!==5) throw new Error('otra tecla alteró el menú');
 });
 `;
 

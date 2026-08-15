@@ -34,6 +34,8 @@ Este archivo resume el avance real del proyecto. Una tarea se marca con `[x]` de
 - [x] Añadir una pantalla de instrucciones traducida.
 - [x] Mejorar la distribución del menú principal.
 - [x] Destacar el número objetivo de la misión.
+- [x] Anadir y aprobar una bienvenida que habilita el audio con clic, `Enter` o `Espacio`.
+- [x] Redisenar y aprobar el panel de Controles traducido y accesible mediante `Esc`.
 - [x] Añadir una sombra fija en el suelo debajo del personaje.
 - [x] Aumentar la velocidad visual del escenario del nivel 3 sin alterar su dificultad lógica.
 - [x] Añadir accesos directos de desarrollo para probar los niveles mediante `?testLevel=1`, `2` o `3`.

@@ -6,6 +6,9 @@ const gestor = fs.readFileSync(
   'JETS OFICIAL_2026_08_11_19_27_35/audio_manager.js',
   'utf8'
 );
+if (!/let audioSilenciado = false/.test(gestor)) throw new Error('el juego no inicia con sonido activo');
+if (/localStorage\.setItem\('numbo\.audio\.silenciado'/.test(gestor)) throw new Error('el silencio persiste accidentalmente entre recargas');
+
 
 const entorno = `
 const ESTADOS = {MENU:'MENU', JUGANDO:'PLAY', PAUSA:'PAUSED', NIVEL_COMPLETADO:'LEVEL_COMPLETE', VICTORIA:'VICTORY', DERROTA:'GAME_OVER'};
@@ -23,19 +26,20 @@ function pista(nombre) {
 }
 const sonidoFondo=pista('menu'), sonidoMapa1=pista('nivel1'), sonidoMapa2=pista('nivel2'), sonidoMapa3=pista('nivel3');
 const sonidoCorrecto=pista('correcto'), sonidoIncorrecto=pista('incorrecto'), sonidoGanaste=pista('ganaste'), sonidoHoverMenu=pista('hover'), sonidoPausa=pista('pausa');
-let estadoJuego=ESTADOS.MENU, nivel=1, frameCount=100, key='';
+let estadoJuego=ESTADOS.MENU, nivel=1, frameCount=100, key='', keyCode=0;
 function preload(){} function loadImage(ruta){return {ruta};}
 const localStorage={datos:{},getItem(k){return this.datos[k]||null;},setItem(k,v){this.datos[k]=v;}};
 function cambiarEstado(nuevo){estadoJuego=nuevo;}
 function draw(){} function mousePressed(){} function keyPressed(){}
 let mouseX=0, mouseY=0, width=600, height=400;
 function fill(){} function noStroke(){} function noFill(){} function rect(){} function triangle(){} function arc(){} function line(){} function image(){} function push(){} function pop(){} function translate(){} function textAlign(){} function textFont(){} function textSize(){} function text(){} function stroke(){} function strokeWeight(){} function color(){return 0;}
-const CENTER=0, HALF_PI=Math.PI/2;
+const CENTER=0, HALF_PI=Math.PI/2, ENTER=13;
 `;
 
 const pruebas = `
 playSound(sonidoFondo);
 if (sonidoFondo.loops!==0) throw new Error('audio iniciado antes de interacción');
+bienvenidaActiva=false;
 desbloquearAudio();
 if (sonidoFondo.loops!==1) throw new Error('música de menú no iniciada');
 cambiarEstado(ESTADOS.JUGANDO);

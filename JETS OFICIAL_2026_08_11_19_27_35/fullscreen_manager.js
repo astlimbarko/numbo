@@ -83,6 +83,10 @@ keyPressed = function keyPressedConPantallaCompleta(evento) {
       document.exitFullscreen();
       return false;
     }
+    if (estadoJuego === ESTADOS.MENU && menuOne === 2) {
+      mostrarInstrucciones();
+      return false;
+    }
   }
   if (keyCode === 122 || (keyCode === ENTER && evento && evento.altKey)) {
     alternarPantallaCompleta();

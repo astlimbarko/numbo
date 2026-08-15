@@ -16,6 +16,8 @@ const TRADUCCIONES_NUMBO = Object.freeze({
     puntaje: 'Puntaje', volverJugar: 'Volver a jugar', reintentar: 'Reintentar',
     instrucciones: 'Instrucciones', controles: 'CONTROLES', mover: 'Mover', saltar: 'Saltar',
     pausar: 'Pausar o continuar', silenciar: 'Silenciar sonido',
+    teclaEspacio: 'ESPACIO',
+    controlPausa: 'Pausa', controlSonido: 'Sonido',
     objetivo: 'Atrapa la operación que da el número objetivo.'
   },
   qu: {
@@ -27,6 +29,8 @@ const TRADUCCIONES_NUMBO = Object.freeze({
     puntaje: 'Yupay', volverJugar: 'Musuqmanta pukllay', reintentar: 'Musuqmanta',
     instrucciones: 'Kamachiykuna', controles: 'KAMACHIYKUNA', mover: 'Kuyuchiy', saltar: 'Paway',
     pausar: 'Samay utaq qatiy', silenciar: 'Uyarina upallachiy',
+    teclaEspacio: 'SPACE',
+    controlPausa: 'Samay', controlSonido: 'Uyarina',
     objetivo: 'Munay yupayta quq rurayta hap’iy.'
   },
   ay: {
@@ -38,6 +42,8 @@ const TRADUCCIONES_NUMBO = Object.freeze({
     puntaje: 'Jakhuwi', volverJugar: 'Wasitata anataña', reintentar: 'Wasitata yant’aña',
     instrucciones: 'Yatichawinaka', controles: 'APNAQAWINAKA', mover: 'Unxtayaña', saltar: 'Thuqtaña',
     pausar: 'Samart’aña jan ukax sarantaña', silenciar: 'Uñt’awi amukt’ayaña',
+    teclaEspacio: 'SPACE',
+    controlPausa: 'Samartawi', controlSonido: 'Uyarina',
     objetivo: 'Amtata jakhuwi churki uka lurawi katjaña.'
   },
   gn: {
@@ -49,6 +55,8 @@ const TRADUCCIONES_NUMBO = Object.freeze({
     puntaje: 'Puntuación', volverJugar: 'Eñembosarái jey', reintentar: 'Eñeha’ã jey',
     instrucciones: 'Ñe’ẽmondo', controles: 'JEPOKUAHA', mover: 'Mýi', saltar: 'Popo',
     pausar: 'Epytu’u térã ehojey', silenciar: 'Emokirirĩ tyapu',
+    teclaEspacio: 'SPACE',
+    controlPausa: 'Pytuu', controlSonido: 'Tyapu',
     objetivo: 'Ejapyhy tembiapo ome’ẽva papapy ojehekáva.'
   },
   pdt: {
@@ -60,6 +68,8 @@ const TRADUCCIONES_NUMBO = Object.freeze({
     puntaje: 'Punkte', volverJugar: 'Noch mol spälen', reintentar: 'Noch mol versäakjen',
     instrucciones: 'Anwiesungen', controles: 'STIERUNG', mover: 'Bewegen', saltar: 'Sprüngen',
     pausar: 'Pause oder wiedermaken', silenciar: 'Ton utmaken',
+    teclaEspacio: 'SPACE',
+    controlPausa: 'Paus', controlSonido: 'Ton',
     objetivo: 'Fang de Opgow, dee de Teelnummer jeft.'
   }
 });

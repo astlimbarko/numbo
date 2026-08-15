@@ -1,8 +1,11 @@
 let audioDesbloqueado = false;
-let audioSilenciado = localStorage.getItem('numbo.audio.silenciado') === 'true';
+let audioDesbloqueando = false;
+let hoverMenuPendiente = false;
+let audioSilenciado = false;
 let pistaActual = null;
 let mostrarAudioHasta = 0;
 let iconoSpeaker;
+let bienvenidaActiva = true;
 
 const preloadSinControlAudio = preload;
 preload = function preloadConControlAudio() {
@@ -35,13 +38,12 @@ function aplicarSilencio() {
   [sonidoCorrecto, sonidoIncorrecto, sonidoGanaste]
     .filter(Boolean)
     .forEach((efecto) => efecto.setVolume(audioSilenciado ? 0 : 1));
-}
   if (sonidoHoverMenu) sonidoHoverMenu.setVolume(audioSilenciado ? 0 : 0.65);
   if (sonidoPausa) sonidoPausa.setVolume(audioSilenciado ? 0 : 0.8);
+}
 
 function alternarSilencio() {
   audioSilenciado = !audioSilenciado;
-  localStorage.setItem('numbo.audio.silenciado', String(audioSilenciado));
   mostrarAudioHasta = frameCount + 90;
   aplicarSilencio();
 }
@@ -107,7 +109,11 @@ function sincronizarMusica(estadoAnterior, nuevoEstado) {
 }
 
 function reproducirSonidoHoverMenu() {
-  if (!audioDesbloqueado || audioSilenciado || !sonidoHoverMenu) return;
+  if (!audioDesbloqueado) {
+    hoverMenuPendiente = true;
+    return;
+  }
+  if (audioSilenciado || !sonidoHoverMenu) return;
   if (sonidoHoverMenu.isPlaying()) sonidoHoverMenu.stop();
   sonidoHoverMenu.setVolume(0.65);
   sonidoHoverMenu.play();
@@ -120,19 +126,112 @@ function reproducirSonidoPausa() {
   sonidoPausa.play();
 }
 
-function desbloquearAudio() {
-  if (audioDesbloqueado) return;
-  audioDesbloqueado = true;
-  aplicarSilencio();
+function contextoAudioListo() {
+  if (typeof getAudioContext !== 'function') return true;
+  const contexto = getAudioContext();
+  return Boolean(contexto && contexto.state === 'running');
+}
 
-  if (typeof userStartAudio === 'function') {
-    const inicio = userStartAudio();
-    if (inicio && typeof inicio.then === 'function') {
-      inicio.then(() => iniciarPista(obtenerPista(nombrePistaParaEstado(estadoJuego, nivel))));
-      return;
-    }
-  }
+function finalizarDesbloqueoAudio() {
+  if (!contextoAudioListo()) return false;
+  audioDesbloqueado = true;
+  audioDesbloqueando = false;
+  aplicarSilencio();
   iniciarPista(obtenerPista(nombrePistaParaEstado(estadoJuego, nivel)));
+
+  if (hoverMenuPendiente && estadoJuego === ESTADOS.MENU) {
+    hoverMenuPendiente = false;
+    reproducirSonidoHoverMenu();
+  } else {
+    hoverMenuPendiente = false;
+  }
+  return true;
+}
+
+function desbloquearAudio() {
+  if (contextoAudioListo()) {
+    if (!audioDesbloqueado) finalizarDesbloqueoAudio();
+    return;
+  }
+
+  audioDesbloqueado = false;
+  // Cada gesto real puede reintentar si Chrome dejó pendiente un intento anterior.
+  if (audioDesbloqueando) audioDesbloqueando = false;
+  audioDesbloqueando = true;
+
+  const contexto = typeof getAudioContext === 'function' ? getAudioContext() : null;
+  const inicio = contexto && typeof contexto.resume === 'function'
+    ? contexto.resume()
+    : (typeof userStartAudio === 'function' ? userStartAudio() : null);
+
+  if (inicio && typeof inicio.then === 'function') {
+    inicio.then(() => {
+      audioDesbloqueando = false;
+      finalizarDesbloqueoAudio();
+    }).catch(() => {
+      audioDesbloqueando = false;
+      audioDesbloqueado = false;
+    });
+    return;
+  }
+
+  audioDesbloqueando = false;
+  finalizarDesbloqueoAudio();
+}
+
+function verificarAudioEnInteraccion() {
+  if (!contextoAudioListo()) desbloquearAudio();
+  else if (!audioDesbloqueado) finalizarDesbloqueoAudio();
+}
+
+function dibujarBienvenida() {
+  push();
+  noStroke();
+  fill(35, 18, 70, 105);
+  rect(0, 0, width, height);
+
+  stroke(72, 30, 145);
+  strokeWeight(5);
+  fill(249, 247, 255);
+  rect(105, 70, 390, 260, 24);
+
+  noStroke();
+  fill(116, 42, 196);
+  textAlign(CENTER, CENTER);
+  textFont('Arial Black');
+  textSize(25);
+  text('¡BIENVENIDO A NUMBO!', width / 2, 118);
+
+  fill(55);
+  textFont('Arial');
+  textSize(18);
+  text('Una aventura matemática te espera', width / 2, 166);
+
+  const sobreBoton = mouseX >= 190 && mouseX <= 410 && mouseY >= 215 && mouseY <= 272;
+  stroke(54, 25, 105);
+  strokeWeight(3);
+  fill(sobreBoton ? color(255, 214, 61) : color(255, 194, 35));
+  rect(190, 215, 220, 57, 15);
+  noStroke();
+  fill(65, 30, 120);
+  textFont('Arial Black');
+  textSize(sobreBoton ? 27 : 25);
+  text('JUGAR', width / 2, 244);
+
+  fill(85);
+  textFont('Arial');
+  textSize(14);
+  text('ENTER  ·  ESPACIO  ·  CLIC', width / 2, 298);
+  pop();
+}
+
+function comenzarDesdeBienvenida() {
+  if (!bienvenidaActiva) return false;
+  bienvenidaActiva = false;
+  hoverMenuPendiente = false;
+  opcionMenuHoverAnterior = null;
+  desbloquearAudio();
+  return true;
 }
 
 function playSound(sonido) {
@@ -196,14 +295,18 @@ cambiarEstado = function cambiarEstadoConAudio(nuevoEstado) {
 const dibujarSinControlAudio = draw;
 draw = function dibujarConControlAudio() {
   dibujarSinControlAudio();
-  if (controlAudioVisible()) dibujarControlAudio();
+  if (bienvenidaActiva) dibujarBienvenida();
+  else if (controlAudioVisible()) dibujarControlAudio();
 };
 
 const mousePressedSinAudio = mousePressed;
 mousePressed = function mousePressedConAudio() {
-  if (!audioDesbloqueado) {
-    desbloquearAudio();
+  if (bienvenidaActiva) {
+    const sobreJugar = mouseX >= 190 && mouseX <= 410 && mouseY >= 215 && mouseY <= 272;
+    if (sobreJugar) comenzarDesdeBienvenida();
+    return false;
   }
+  verificarAudioEnInteraccion();
   if (controlAudioVisible() && mouseX >= 540 && mouseX <= 590 && mouseY >= 10 && mouseY <= 52) {
     alternarSilencio();
   }
@@ -212,7 +315,11 @@ mousePressed = function mousePressedConAudio() {
 
 const keyPressedSinAudio = keyPressed;
 keyPressed = function keyPressedConAudio() {
-  if (!audioDesbloqueado) {
+  if (bienvenidaActiva) {
+    if (keyCode === ENTER || keyCode === 32) comenzarDesdeBienvenida();
+    return false;
+  }
+  if (!contextoAudioListo()) {
     desbloquearAudio();
     return false;
   }
