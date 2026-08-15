@@ -53,7 +53,7 @@ Este archivo resume el avance real del proyecto. Una tarea se marca con `[x]` de
 - [x] Analizar la arquitectura global: conservar la estructura actual para tres niveles y refactorizar gradualmente sin una reescritura POO.
 - [x] Aprobar el comportamiento de `Esc`: primero sale de pantalla completa y después responde el juego.
 - [x] Detener el mapa durante pausa, nivel completado, victoria y derrota.
-- [ ] Ajustar la velocidad visual del nivel 3 después de evaluarla.
+- [x] Ajustar y aprobar la velocidad visual del nivel 3.
 - [ ] Ajustar el movimiento de Numbi en el nivel 3.
 - [ ] Diseñar un efecto visual de viento para Numbi en el nivel 3.
 - [ ] Revisar la mezcla de operaciones matemáticas del nivel 3.

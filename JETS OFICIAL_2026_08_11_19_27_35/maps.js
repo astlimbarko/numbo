@@ -232,11 +232,11 @@ function mapa3(){
   
   // Manejo de velocidades para el mapa 3
   // El primer plano supera ligeramente la velocidad visual del nivel 2.
-  arboles1_x -= velocidad * 0.85;
-  arboles2_x -= velocidad * 0.85;
-  piso1_x -= velocidad * 0.85;
-  piso2_x -= velocidad * 0.55;
-  arboles3_x -= velocidad * 0.3;
+  arboles1_x -= velocidad * 0.8;
+  arboles2_x -= velocidad * 0.8;
+  piso1_x -= velocidad * 0.8;
+  piso2_x -= velocidad * 0.5;
+  arboles3_x -= velocidad * 0.25;
   monta1_x -= velocidad * 0.05; 
   monta2_x -= velocidad * 0.04; 
   monta3_x -= velocidad * 0.03; 
