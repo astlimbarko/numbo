@@ -5,6 +5,8 @@ let nivel = 1; //hay 3 niveles y esta ajustado
 
 let sonidoCorrecto; //para el sonido
 let sonidoIncorrecto;
+let sonidoHoverMenu;
+let sonidoPausa;
 
 let velo; //velocidad numeros
 //let velodi = 0.5; 

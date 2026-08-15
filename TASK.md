@@ -58,7 +58,8 @@ Este archivo resume el avance real del proyecto. Una tarea se marca con `[x]` de
 - [x] Diseñar y aprobar efectos de viento ambiental y de movimiento para Numbi en el nivel 3.
 - [x] Aprobar la mezcla de operaciones matemáticas del nivel 3 y reducir 25% el peso de operandos de tres cifras.
 - [ ] Analizar y mejorar la visibilidad de las operaciones matemáticas sobre los tres mapas.
-- [ ] Añadir sonido breve al pasar por los cuatro botones del menú principal.
+- [x] Añadir y aprobar un sonido brillante al pasar por los cuatro botones del menú principal.
+- [x] Añadir y aprobar un sonido brillante al entrar en pausa.
 - [ ] Analizar y equilibrar la velocidad de los tres niveles.
 - [ ] Revisar mapas, dificultad y progresión entre niveles.
 - [ ] Revisar y optimizar imágenes grandes solamente cuando sea necesario.

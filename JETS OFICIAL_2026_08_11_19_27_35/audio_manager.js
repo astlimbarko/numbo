@@ -36,6 +36,8 @@ function aplicarSilencio() {
     .filter(Boolean)
     .forEach((efecto) => efecto.setVolume(audioSilenciado ? 0 : 1));
 }
+  if (sonidoHoverMenu) sonidoHoverMenu.setVolume(audioSilenciado ? 0 : 0.65);
+  if (sonidoPausa) sonidoPausa.setVolume(audioSilenciado ? 0 : 0.8);
 
 function alternarSilencio() {
   audioSilenciado = !audioSilenciado;
@@ -105,22 +107,17 @@ function sincronizarMusica(estadoAnterior, nuevoEstado) {
 }
 
 function reproducirSonidoHoverMenu() {
-  if (!audioDesbloqueado || audioSilenciado || typeof getAudioContext !== 'function') return;
-  const contexto = getAudioContext();
-  if (!contexto || contexto.state !== 'running') return;
+  if (!audioDesbloqueado || audioSilenciado || !sonidoHoverMenu) return;
+  if (sonidoHoverMenu.isPlaying()) sonidoHoverMenu.stop();
+  sonidoHoverMenu.setVolume(0.65);
+  sonidoHoverMenu.play();
+}
 
-  const ahora = contexto.currentTime;
-  const oscilador = contexto.createOscillator();
-  const volumen = contexto.createGain();
-  oscilador.type = 'sine';
-  oscilador.frequency.setValueAtTime(520, ahora);
-  oscilador.frequency.exponentialRampToValueAtTime(680, ahora + 0.055);
-  volumen.gain.setValueAtTime(0.035, ahora);
-  volumen.gain.exponentialRampToValueAtTime(0.001, ahora + 0.07);
-  oscilador.connect(volumen);
-  volumen.connect(contexto.destination);
-  oscilador.start(ahora);
-  oscilador.stop(ahora + 0.075);
+function reproducirSonidoPausa() {
+  if (!audioDesbloqueado || audioSilenciado || !sonidoPausa) return;
+  if (sonidoPausa.isPlaying()) sonidoPausa.stop();
+  sonidoPausa.setVolume(0.8);
+  sonidoPausa.play();
 }
 
 function desbloquearAudio() {
@@ -191,6 +188,9 @@ cambiarEstado = function cambiarEstadoConAudio(nuevoEstado) {
   const estadoAnterior = estadoJuego;
   cambiarEstadoSinAudio(nuevoEstado);
   sincronizarMusica(estadoAnterior, estadoJuego);
+  if (estadoAnterior !== estadoJuego && estadoJuego === ESTADOS.PAUSA) {
+    reproducirSonidoPausa();
+  }
 };
 
 const dibujarSinControlAudio = draw;

@@ -6,6 +6,8 @@ function preload() {
   sonidoCorrecto = loadSound('sonidos/correct.mp3');
   sonidoIncorrecto = loadSound('sonidos/fallo.mp3');
   sonidoGanaste = loadSound('sonidos/ganaste.mp3');
+  sonidoHoverMenu = loadSound('sonidos/menu-hover.wav');
+  sonidoPausa = loadSound('sonidos/pausa-brillo.wav');
   
   //sonido juego
   sonidoFondo = loadSound('sonidos/sonidoFondo.mp3');

@@ -22,7 +22,7 @@ function pista(nombre) {
   };
 }
 const sonidoFondo=pista('menu'), sonidoMapa1=pista('nivel1'), sonidoMapa2=pista('nivel2'), sonidoMapa3=pista('nivel3');
-const sonidoCorrecto=pista('correcto'), sonidoIncorrecto=pista('incorrecto'), sonidoGanaste=pista('ganaste');
+const sonidoCorrecto=pista('correcto'), sonidoIncorrecto=pista('incorrecto'), sonidoGanaste=pista('ganaste'), sonidoHoverMenu=pista('hover'), sonidoPausa=pista('pausa');
 let estadoJuego=ESTADOS.MENU, nivel=1, frameCount=100, key='';
 function preload(){} function loadImage(ruta){return {ruta};}
 const localStorage={datos:{},getItem(k){return this.datos[k]||null;},setItem(k,v){this.datos[k]=v;}};
@@ -43,6 +43,7 @@ if (sonidoMapa1.loops!==1 || sonidoFondo.stops!==1) throw new Error('transición
 cambiarEstado(ESTADOS.PAUSA);
 if (sonidoMapa1.pauses!==1) throw new Error('la pausa no detuvo la música');
 cambiarEstado(ESTADOS.JUGANDO);
+if (sonidoPausa.plays!==1) throw new Error('el efecto de pausa no sonó una vez');
 if (sonidoMapa1.plays!==1) throw new Error('la música no se reanudó');
 nivel=2; cambiarEstado(ESTADOS.NIVEL_COMPLETADO); cambiarEstado(ESTADOS.JUGANDO);
 if (sonidoMapa2.loops!==1) throw new Error('música del nivel 2 no iniciada');
