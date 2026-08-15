@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" type="text/css" href="style.css?v=20260814-2">
+    <link rel="stylesheet" type="text/css" href="style.css?v=20260815-1">
     <meta charset="utf-8" />
 
   </head>
@@ -18,9 +18,10 @@
           <div class="numbo-loading__suelo"></div>
         </div>
         <p class="numbo-loading__mensaje">Preparando la aventura…</p>
-        <div class="numbo-loading__barra" aria-hidden="true">
+        <div class="numbo-loading__barra" role="progressbar" aria-label="Progreso de carga" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           <span></span>
         </div>
+        <p class="numbo-loading__porcentaje">0%</p>
         <p class="numbo-loading__operaciones" aria-hidden="true">+ &nbsp; − &nbsp; × &nbsp; ÷</p>
       </section>
     </div>
@@ -49,5 +50,6 @@
     <script src="colisiones_mejoradas.js?v=20260813-2"></script>
     <script src="audio_manager.js?v=20260813-2"></script>
     <script src="fullscreen_manager.js?v=20260813-2"></script>
+    <script src="loading_progress.js?v=20260815-1"></script>
   </body>
 </html>
