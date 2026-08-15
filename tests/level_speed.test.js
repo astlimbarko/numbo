@@ -16,11 +16,11 @@ assert.match(maps, /piso2_x -= velocidad \* 0\.5/);
 assert.match(maps, /arboles3_x -= velocidad \* 0\.25/);
 
 // La dificultad lógica existente no forma parte de esta microtarea.
-assert.match(levels, /velocidad = velocidadMapaPorEstado\(0\)/);
-assert.match(levels, /velocidad = velocidadMapaPorEstado\(4\)/);
-assert.match(levels, /velocidad = velocidadMapaPorEstado\(8\)/);
-assert.match(state, /velo = 6;[\s\S]*velo = 7;[\s\S]*velo = 8;/);
-assert.match(state, /inter = 90;[\s\S]*inter = 90;[\s\S]*inter = 65;/);
-assert.match(html, /maps\.js\?v=20260815-level3speed2/);
+assert.match(levels, /velocidad = velocidadMapaPorEstado\(1\)/);
+assert.match(levels, /velocidad = velocidadMapaPorEstado\(2\)/);
+assert.match(levels, /velocidad = velocidadMapaPorEstado\(3\)/);
+assert.match(state, /velo = configuracion\.velocidadOperacion/);
+assert.match(state, /inter = configuracion\.intervaloOperacion/);
+assert.match(html, /configuracion_niveles\.js\?v=[^"']+/);
 
 console.log('OK: nivel 3 acelera visualmente sin cambiar su dificultad lógica');

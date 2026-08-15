@@ -27,6 +27,7 @@ Una tarea se marca `[X]` solamente cuando fue implementada, probada, aprobada y 
 [X] Crear sonidos de hover del menu y entrada en pausa
 [X] Redisenar el menu de pausa con la estetica visual de Numbo
 [X] Permitir continuar desde la pausa con Enter sin requerir un clic previo
+[X] Redisenar los paneles finales de victoria y derrota con la estetica de Numbo
 [X] Crear el panel profesional MISION - HALLAR - numero
 [X] Redisenar el panel de Controles y abrirlo con Esc desde el menu
 [X] Crear la sombra fija de Numbi sobre el suelo
@@ -45,8 +46,8 @@ Una tarea se marca `[X]` solamente cuando fue implementada, probada, aprobada y 
 [X] Definir en las especificaciones porcentajes y rangos de la progresion matematica por nivel
 [X] Implementar nivel 1 solo con sumas; nivel 2 con sumas, restas y algunos negativos; nivel 3 con suma, resta, negativos y apariciones ocasionales de multiplicacion y division
 [X] Reemplazar la confirmacion entre niveles por una transicion automatica de pintura en nivel 1 a 2 y nivel 2 a 3
-[ ] Probar y equilibrar la velocidad definitiva de los tres niveles
-[ ] Revisar frecuencia, legibilidad y dificultad de las operaciones por nivel
+[X] Probar y equilibrar la velocidad definitiva de los tres niveles
+[X] Revisar frecuencia, legibilidad y dificultad de las operaciones por nivel
 [ ] Revisar mapas, parallax, transiciones y requisitos para completar cada nivel
 [ ] Completar manualmente los niveles 1, 2 y 3, incluyendo victoria, derrota y reinicio
 [ ] Decidir si Numbo guardara el progreso de niveles

@@ -124,21 +124,18 @@ function dibujarNumbiEstatico() {
 }
 
 function actualizarNivelActual() {
+  const configuracion = obtenerConfiguracionNivel(nivel);
+  velo = configuracion.velocidadOperacion;
+  inter = configuracion.intervaloOperacion;
   if (nivel === 1) {
     stopSound(sonidoFondo);
     playSound(sonidoMapa1);
-    velo = 6;
-    inter = 90;
   } else if (nivel === 2) {
     stopSound(sonidoMapa1);
     playSound(sonidoMapa2);
-    velo = 7;
-    inter = 90;
   } else {
     stopSound(sonidoMapa2);
     playSound(sonidoMapa3);
-    velo = 8;
-    inter = 65;
   }
 
   dibujarNivelActual();
@@ -271,24 +268,66 @@ function dibujarNivelCompletado() {
   dibujarBoton(traducir('siguienteNivel'), 180, 245, 240, 50);
 }
 
+function dibujarDatoResultado(etiqueta, valor, x) {
+  push();
+  stroke(66, 27, 122);
+  strokeWeight(3);
+  fill(255, 211, 54);
+  rect(x, 143, 96, 59, 11);
+  noStroke();
+  fill(77, 31, 135);
+  textAlign(CENTER, CENTER);
+  textFont('Arial Black');
+  ajustarTextoPausa(etiqueta.toUpperCase(), 82, 10, 7);
+  text(etiqueta.toUpperCase(), x + 48, 157);
+  textSize(String(valor).length > 5 ? 17 : 23);
+  text(valor, x + 48, 183);
+  pop();
+}
+
+function dibujarPanelResultado(esVictoria) {
+  const titulo = traducir(esVictoria ? 'ganaste' : 'perdiste');
+  const textoPrincipal = traducir(esVictoria ? 'volverJugar' : 'reintentar');
+  push();
+  noStroke();
+  fill(28, 13, 48, 120);
+  rect(0, 0, width, height);
+  stroke(57, 23, 108);
+  strokeWeight(5);
+  fill(104, 38, 179);
+  rect(125, 54, 350, 316, 22);
+  noStroke();
+  fill(esVictoria ? color(139, 55, 218) : color(180, 42, 91));
+  rect(142, 68, 316, 60, 15);
+  fill(esVictoria ? color(255, 211, 54) : color(255, 119, 119));
+  rect(142, 120, 316, 8, 4);
+  fill(255);
+  textAlign(CENTER, CENTER);
+  textFont('Arial Black');
+  ajustarTextoPausa(titulo, 285, 29, 19);
+  text(titulo, width / 2, 98);
+  dibujarDatoResultado(traducir('aciertos'), Acertadas, 142);
+  dibujarDatoResultado(traducir('incorrectas'), Incorrectas, 252);
+  dibujarDatoResultado(traducir('puntaje'), Acertadas * 1000, 362);
+  const sobrePrincipal = dibujarBotonPausa(textoPrincipal, 180, 235, 240, 42, true);
+  const sobreMenu = dibujarBotonPausa(traducir('volverMenu'), 180, 285, 240, 42, false);
+  const botonActual = sobrePrincipal ? 'principal' : (sobreMenu ? 'menu' : null);
+  if (botonActual !== botonPausaHoverAnterior && botonActual !== null) reproducirSonidoHoverMenu();
+  botonPausaHoverAnterior = botonActual;
+  fill(230, 216, 252);
+  noStroke();
+  textFont('Arial');
+  textSize(11);
+  text('R', width / 2, 345);
+  pop();
+}
+
 function dibujarVictoria() {
-  dibujarPanelEstado(traducir('ganaste'), [
-    `${traducir('aciertos')}: ${Acertadas}`,
-    `${traducir('incorrectas')}: ${Incorrectas}`,
-    `${traducir('puntaje')}: ${Acertadas * 1000}`
-  ]);
-  dibujarBoton(traducir('volverJugar'), 180, 235, 240, 42);
-  dibujarBoton(traducir('volverMenu'), 180, 285, 240, 42);
+  dibujarPanelResultado(true);
 }
 
 function dibujarDerrota() {
-  dibujarPanelEstado(traducir('perdiste'), [
-    `${traducir('aciertos')}: ${Acertadas}`,
-    `${traducir('incorrectas')}: ${Incorrectas}`,
-    `${traducir('puntaje')}: ${Acertadas * 1000}`
-  ]);
-  dibujarBoton(traducir('reintentar'), 180, 235, 240, 42);
-  dibujarBoton(traducir('volverMenu'), 180, 285, 240, 42);
+  dibujarPanelResultado(false);
 }
 
 function draw() {

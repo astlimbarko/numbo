@@ -6,8 +6,9 @@ const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const game = path.join(root, 'JETS OFICIAL_2026_08_11_19_27_35');
 const source = fs.readFileSync(path.join(game, 'colisiones_mejoradas.js'), 'utf8');
+const config = fs.readFileSync(path.join(game, 'configuracion_niveles.js'), 'utf8');
 const html = fs.readFileSync(path.join(game, 'index.html'), 'utf8');
-const configSource = source.match(/const VELOCIDAD_NUMBI_POR_NIVEL[^;]+;/)?.[0];
+const configSource = config;
 const functionSource = source.match(/function obtenerVelocidadNumbi\(\) \{[\s\S]*?\n\}/)?.[0];
 
 assert.ok(configSource, 'falta la configuración de velocidad de Numbi');

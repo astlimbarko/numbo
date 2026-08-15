@@ -23,7 +23,7 @@ Los porcentajes y rangos exactos estan definidos en `04-motor-matematico.md`.
 ## Reglas de nivel
 
 - Completar un nivel detendra temporalmente generacion, movimiento y colisiones.
-- El jugador confirmara cuando continuar.
+- La transicion automatica continuara al siguiente nivel sin solicitar confirmacion.
 - Al comenzar el siguiente nivel se limpiaran obstaculos anteriores.
 - El mapa, velocidad, intervalo de generacion y musica cambiaran una sola vez.
 - El nivel 3 terminara en victoria y no intentara abrir un nivel 4.

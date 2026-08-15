@@ -8,10 +8,8 @@ const COLOR_OPERANDO_1 = [19, 181, 210];
 const COLOR_OPERADOR = [218, 44, 67];
 const COLOR_OPERANDO_2 = [92, 196, 28];
 
-const VELOCIDAD_NUMBI_POR_NIVEL = Object.freeze({ 1: 6, 2: 6, 3: 8 });
-
 function obtenerVelocidadNumbi() {
-  return VELOCIDAD_NUMBI_POR_NIVEL[nivel] || VELOCIDAD_NUMBI_POR_NIVEL[1];
+  return obtenerConfiguracionNivel(nivel).velocidadPersonaje;
 }
 
 function detectarColisionRectCirculo(rectangulo, circulo) {
