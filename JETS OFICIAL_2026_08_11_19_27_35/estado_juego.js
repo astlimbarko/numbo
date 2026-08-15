@@ -1,6 +1,7 @@
 const ESTADOS = Object.freeze({
   MENU: 'MENU',
   JUGANDO: 'PLAY',
+  TRANSICION_NIVEL: 'LEVEL_TRANSITION',
   PAUSA: 'PAUSED',
   NIVEL_COMPLETADO: 'LEVEL_COMPLETE',
   VICTORIA: 'VICTORY',
@@ -144,8 +145,7 @@ function actualizarNivelActual() {
   if (juego_perdido || vidas <= 0) cambiarEstado(ESTADOS.DERROTA);
   else if (nivel_completado3) cambiarEstado(ESTADOS.VICTORIA);
   else if ((nivel === 1 && nivel_completado1) || (nivel === 2 && nivel_completado2)) {
-    pasar_nivel = true;
-    cambiarEstado(ESTADOS.NIVEL_COMPLETADO);
+    iniciarTransicionNivel();
   }
 }
 
@@ -220,6 +220,11 @@ function dibujarDerrota() {
 }
 
 function draw() {
+  if (estadoJuego === ESTADOS.TRANSICION_NIVEL) {
+    dibujarTransicionNivel();
+    return;
+  }
+
   if (estadoJuego === ESTADOS.MENU) {
     velocidadGeneral = 0;
     drawMenu();

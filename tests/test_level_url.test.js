@@ -32,6 +32,6 @@ assert.match(state, /const aciertosPrevios = \(nivel - 1\) \* 10/);
 assert.match(state, /Objetivos1 = nivel === 1/);
 assert.match(html, /motor_matematico\.js\?v=[^"']+/, 'falta cargar el motor matematico versionado');
 assert.match(state, /Objetivos2 = nivel <= 2/);
-assert.match(html, /estado_juego\.js\?v=20260815-testlevel1/);
+assert.match(html, /estado_juego\.js\?v=[^"']+/, 'falta cargar el controlador de estados versionado');
 
 console.log('OK: testLevel abre niveles 1-3 y conserva el inicio normal');

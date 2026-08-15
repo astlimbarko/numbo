@@ -7,6 +7,7 @@ let sonidoCorrecto; //para el sonido
 let sonidoIncorrecto;
 let sonidoHoverMenu;
 let sonidoPausa;
+let operacionesSuspendidasHasta = 0;
 
 let velo; //velocidad numeros
 //let velodi = 0.5; 

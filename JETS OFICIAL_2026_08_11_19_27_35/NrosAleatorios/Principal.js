@@ -1,5 +1,5 @@
 function dibujarNumeros(){
-  if (frameCount % inter === 0) {
+  if (millis() >= operacionesSuspendidasHasta && frameCount % inter === 0) {
     generarObstaculo(); }
 
   for (let i = 0; i < obstaculos.length; i++) {

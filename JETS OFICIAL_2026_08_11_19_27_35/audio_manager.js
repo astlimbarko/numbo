@@ -15,7 +15,7 @@ preload = function preloadConControlAudio() {
 
 function nombrePistaParaEstado(estado, nivelActual) {
   if (estado === ESTADOS.MENU) return 'menu';
-  if (estado === ESTADOS.JUGANDO || estado === ESTADOS.PAUSA || estado === ESTADOS.NIVEL_COMPLETADO) {
+  if (estado === ESTADOS.JUGANDO || estado === ESTADOS.PAUSA || estado === ESTADOS.NIVEL_COMPLETADO || estado === ESTADOS.TRANSICION_NIVEL) {
     return `nivel${Math.max(1, Math.min(3, nivelActual))}`;
   }
   return null;

@@ -42,7 +42,7 @@ Una tarea se marca `[X]` solamente cuando fue implementada, probada, aprobada y 
 
 [X] Definir en las especificaciones porcentajes y rangos de la progresion matematica por nivel
 [X] Implementar nivel 1 solo con sumas; nivel 2 con sumas, restas y algunos negativos; nivel 3 con suma, resta, negativos y apariciones ocasionales de multiplicacion y division
-[ ] Reemplazar la confirmacion entre niveles por una transicion automatica de pintura en nivel 1 a 2 y nivel 2 a 3
+[X] Reemplazar la confirmacion entre niveles por una transicion automatica de pintura en nivel 1 a 2 y nivel 2 a 3
 [ ] Probar y equilibrar la velocidad definitiva de los tres niveles
 [ ] Revisar frecuencia, legibilidad y dificultad de las operaciones por nivel
 [ ] Revisar mapas, parallax, transiciones y requisitos para completar cada nivel
