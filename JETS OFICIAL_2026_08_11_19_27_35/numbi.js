@@ -32,9 +32,19 @@ function setupNumbi() {
   }
 }
 
+function dibujarSombraNumbi() {
+  push();
+  noStroke();
+  fill(35, 45, 30, 75);
+  ellipse(posX + ancho_sp / 2, posYInicial + 73, 44, 10);
+  pop();
+}
+
 function drawNumbi() {
   // Generar y dibujar hitbox
   hitboxSP();
+  // La sombra sigue al personaje horizontalmente y permanece sobre el suelo al saltar.
+  dibujarSombraNumbi();
   noFill(); 
   noStroke(); 
   ellipse(posX + ancho_sp / 2, posY + ancho_sp / 2, 30 * 2); // Dibujar círculo del hitbox

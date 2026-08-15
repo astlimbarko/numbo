@@ -34,6 +34,7 @@ Este archivo resume el avance real del proyecto. Una tarea se marca con `[x]` de
 - [x] Añadir una pantalla de instrucciones traducida.
 - [x] Mejorar la distribución del menú principal.
 - [x] Destacar el número objetivo de la misión.
+- [x] Añadir una sombra fija en el suelo debajo del personaje.
 
 ## Pendientes — versión 1
 
