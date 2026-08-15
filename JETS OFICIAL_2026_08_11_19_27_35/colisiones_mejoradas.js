@@ -1,6 +1,12 @@
 const HITBOX_PERSONAJE_RADIO = 26;
 const HITBOX_OPERACION_ALTO = 56;
 
+const VELOCIDAD_NUMBI_POR_NIVEL = Object.freeze({ 1: 6, 2: 6, 3: 8 });
+
+function obtenerVelocidadNumbi() {
+  return VELOCIDAD_NUMBI_POR_NIVEL[nivel] || VELOCIDAD_NUMBI_POR_NIVEL[1];
+}
+
 function detectarColisionRectCirculo(rectangulo, circulo) {
   const mitadAncho = Math.max(0, rectangulo.w) / 2;
   const mitadAlto = Math.max(0, rectangulo.h) / 2;
@@ -32,8 +38,9 @@ function hitboxSP() {
 
 function moveCharacter() {
   const limiteDerecho = width - ancho_sp;
-  if (moverDerecha && !moverIzquierda) posX = Math.min(limiteDerecho, posX + velocidadSP);
-  if (moverIzquierda && !moverDerecha) posX = Math.max(0, posX - velocidadSP);
+  const velocidadActual = obtenerVelocidadNumbi();
+  if (moverDerecha && !moverIzquierda) posX = Math.min(limiteDerecho, posX + velocidadActual);
+  if (moverIzquierda && !moverDerecha) posX = Math.max(0, posX - velocidadActual);
 }
 
 function mostrarObstaculo(obstaculo) {

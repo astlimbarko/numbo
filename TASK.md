@@ -54,7 +54,7 @@ Este archivo resume el avance real del proyecto. Una tarea se marca con `[x]` de
 - [x] Aprobar el comportamiento de `Esc`: primero sale de pantalla completa y después responde el juego.
 - [x] Detener el mapa durante pausa, nivel completado, victoria y derrota.
 - [x] Ajustar y aprobar la velocidad visual del nivel 3.
-- [ ] Ajustar el movimiento de Numbi en el nivel 3.
+- [x] Aumentar y aprobar la velocidad de Numbi en el nivel 3.
 - [ ] Diseñar un efecto visual de viento para Numbi en el nivel 3.
 - [ ] Revisar la mezcla de operaciones matemáticas del nivel 3.
 - [ ] Añadir sonido breve al pasar por los cuatro botones del menú principal.
