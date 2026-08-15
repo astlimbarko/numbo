@@ -26,15 +26,23 @@ function cambiarEstado(nuevoEstado) {
   }
 }
 
+function obtenerNivelInicial() {
+  const parametros = new URLSearchParams(window.location.search);
+  const nivelPrueba = Number.parseInt(parametros.get('testLevel'), 10);
+
+  return [1, 2, 3].includes(nivelPrueba) ? nivelPrueba : 1;
+}
+
 function reiniciarPartida() {
   obstaculos.length = 0;
-  mision = 10;
-  nivel = 1;
+  nivel = obtenerNivelInicial();
+  mision = mision_general();
+  const aciertosPrevios = (nivel - 1) * 10;
   vidas = 5;
-  Acertadas = 0;
+  Acertadas = aciertosPrevios;
   Incorrectas = 0;
-  Objetivos1 = true;
-  Objetivos2 = true;
+  Objetivos1 = nivel === 1;
+  Objetivos2 = nivel <= 2;
   Objetivos3 = true;
   nivel_completado1 = false;
   nivel_completado2 = false;
