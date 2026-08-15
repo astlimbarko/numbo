@@ -15,6 +15,7 @@ Este archivo resume el avance real del proyecto. Una tarea se marca con `[x]` de
 - [x] Mostrar progreso real de imágenes y audios durante la bienvenida.
 - [x] Crear el panel profesional `MISIÓN — HALLAR — número` aprobado.
 - [x] Mejorar las letras del panel: `MISIÓN` dorado y `HALLAR` blanco con sombra.
+- [x] Añadir una sombra suave que siga a Numbi y permanezca fija sobre el suelo al saltar.
 - [x] Actualizar la información del autor.
 - [x] Organizar los estados del juego y el reinicio de partida.
 - [x] Corregir y probar el motor matemático.
