@@ -1,3 +1,7 @@
+const PROPORCION_REPASO_NIVEL_3 = 0.35;
+const LIMITE_OPERANDO_GRANDE = 100;
+const PROPORCION_CONSERVAR_OPERANDO_GRANDE = 0.75;
+
 function enteroAleatorio(minimo, maximo) {
   return Math.floor(Math.random() * (maximo - minimo + 1)) + minimo;
 }
@@ -99,6 +103,38 @@ function generarMultiDivIncorrecta(objetivo) {
   return operacion;
 }
 
+function elegirFamiliaOperacionNivel3(valorAleatorio = Math.random()) {
+  return valorAleatorio < PROPORCION_REPASO_NIVEL_3 ? 'sumaResta' : 'multiDiv';
+}
+
+function operacionTieneOperandosGrandes(operacion) {
+  return Math.abs(operacion.num1) >= LIMITE_OPERANDO_GRANDE
+    || Math.abs(operacion.num2) >= LIMITE_OPERANDO_GRANDE;
+}
+
+function conservarOperacionGrande(valorAleatorio = Math.random()) {
+  return valorAleatorio < PROPORCION_CONSERVAR_OPERANDO_GRANDE;
+}
+
+function generarOperacionNivel3(objetivo, debeSerCorrecta) {
+  const familia = elegirFamiliaOperacionNivel3();
+  const generar = familia === 'sumaResta'
+    ? () => debeSerCorrecta
+      ? generarSumaRestaCorrecta(objetivo, 3)
+      : generarSumaRestaIncorrecta(objetivo, 3)
+    : () => debeSerCorrecta
+      ? generarMultiDivCorrecta(objetivo)
+      : generarMultiDivIncorrecta(objetivo);
+
+  let operacion;
+  let intentos = 0;
+  do {
+    operacion = generar();
+    intentos++;
+  } while (operacionTieneOperandosGrandes(operacion) && !conservarOperacionGrande() && intentos < 20);
+  return operacion;
+}
+
 function generarOperacionMatematica(objetivo, nivelActual, debeSerCorrecta = Math.random() < 0.5) {
   if (!Number.isInteger(objetivo)) throw new Error('La misión debe ser un número entero');
   if (![1, 2, 3].includes(nivelActual)) throw new Error(`Nivel no soportado: ${nivelActual}`);
@@ -109,9 +145,7 @@ function generarOperacionMatematica(objetivo, nivelActual, debeSerCorrecta = Mat
       : generarSumaRestaIncorrecta(objetivo, nivelActual);
   }
 
-  return debeSerCorrecta
-    ? generarMultiDivCorrecta(objetivo)
-    : generarMultiDivIncorrecta(objetivo);
+  return generarOperacionNivel3(objetivo, debeSerCorrecta);
 }
 
 function generarOperacion(objetivo, nivelActual) {
@@ -146,6 +180,9 @@ if (typeof module !== 'undefined' && module.exports) {
     calcularResultado,
     crearOperacion,
     divisoresPositivos,
-    generarOperacionMatematica
+    generarOperacionMatematica,
+    elegirFamiliaOperacionNivel3,
+    operacionTieneOperandosGrandes,
+    conservarOperacionGrande
   };
 }

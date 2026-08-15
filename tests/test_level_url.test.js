@@ -30,6 +30,7 @@ assert.equal(obtenerNivel('?testLevel=texto'), 1);
 
 assert.match(state, /const aciertosPrevios = \(nivel - 1\) \* 10/);
 assert.match(state, /Objetivos1 = nivel === 1/);
+assert.match(html, /motor_matematico\.js\?v=20260815-level3mix2/);
 assert.match(state, /Objetivos2 = nivel <= 2/);
 assert.match(html, /estado_juego\.js\?v=20260815-testlevel1/);
 
