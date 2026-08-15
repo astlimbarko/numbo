@@ -26,6 +26,7 @@ Una tarea se marca `[X]` solamente cuando fue implementada, probada, aprobada y 
 [X] Centralizar musica, efectos, pausa, silencio y tecla M
 [X] Crear sonidos de hover del menu y entrada en pausa
 [X] Redisenar el menu de pausa con la estetica visual de Numbo
+[X] Permitir continuar desde la pausa con Enter sin requerir un clic previo
 [X] Crear el panel profesional MISION - HALLAR - numero
 [X] Redisenar el panel de Controles y abrirlo con Esc desde el menu
 [X] Crear la sombra fija de Numbi sobre el suelo

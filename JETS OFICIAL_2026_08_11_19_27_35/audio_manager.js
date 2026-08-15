@@ -314,20 +314,21 @@ mousePressed = function mousePressedConAudio() {
 };
 
 const keyPressedSinAudio = keyPressed;
-keyPressed = function keyPressedConAudio() {
+keyPressed = function keyPressedConAudio(evento) {
   if (bienvenidaActiva) {
     if (keyCode === ENTER || keyCode === 32) comenzarDesdeBienvenida();
     return false;
   }
   if (!contextoAudioListo()) {
     desbloquearAudio();
+    if (estadoJuego === ESTADOS.PAUSA && keyCode === ENTER) return keyPressedSinAudio(evento);
     return false;
   }
   if (key === 'm' || key === 'M') {
     alternarSilencio();
     return false;
   }
-  return keyPressedSinAudio();
+  return keyPressedSinAudio(evento);
 };
 
 if (typeof module !== 'undefined' && module.exports) {

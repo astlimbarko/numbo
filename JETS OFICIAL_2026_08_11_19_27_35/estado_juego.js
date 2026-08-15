@@ -259,7 +259,7 @@ function dibujarPausa() {
   noStroke();
   textFont('Arial');
   textSize(11);
-  text('ESC', width / 2, 331);
+  text('ENTER  /  ESC', width / 2, 331);
   pop();
 }
 
@@ -320,6 +320,11 @@ function draw() {
 function keyPressed() {
   if (keyCode === ESCAPE) {
     if (estadoJuego === ESTADOS.JUGANDO || estadoJuego === ESTADOS.PAUSA) alternarPausa();
+    return false;
+  }
+
+  if (estadoJuego === ESTADOS.PAUSA && keyCode === ENTER) {
+    alternarPausa();
     return false;
   }
 
