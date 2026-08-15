@@ -1,11 +1,32 @@
 function preload() {
+  precargarMapas();
+  precargaNumbi();
+  
+  //precargando
+  sonidoCorrecto = loadSound('sonidos/correct.mp3');
+  sonidoIncorrecto = loadSound('sonidos/fallo.mp3');
+  sonidoGanaste = loadSound('sonidos/ganaste.mp3');
+  
+  //sonido juego
   sonidoFondo = loadSound('sonidos/sonidoFondo.mp3');
-  imgMenu = loadImage('img/scmenu.png');
+  sonidoMapa1 = loadSound('sonidos/sonidoMapa1.mp3');
+  sonidoMapa2 = loadSound('sonidos/sonidoMapa2.mp3');
+  sonidoMapa3 = loadSound('sonidos/sonidoMapa3.mp3');
+  
+  
+  //barra superior
+  corazonImg = loadImage("img/barra_superior/corazon.png"); 
+  copa = loadImage("img/barra_superior/copa.png");
+  hallar_m = loadImage("img/barra_superior/mision.png");
+  numberImg = loadImage("img/num.png")
+  
+  imgMenu = loadImage('img/scmenu.png'); //menu
 }
 
 
 function setup() {
   createCanvas(600, 400);
+  setupNumbi(); //setup numbi
   inicializarMapas();
   playSound(sonidoFondo);
 

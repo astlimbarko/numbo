@@ -1,6 +1,5 @@
 const ESTADOS = Object.freeze({
   MENU: 'MENU',
-  CARGANDO: 'LOADING_LEVEL',
   JUGANDO: 'PLAY',
   PAUSA: 'PAUSED',
   NIVEL_COMPLETADO: 'LEVEL_COMPLETE',
@@ -55,18 +54,10 @@ function reiniciarPartida() {
   inicializarMapas();
 }
 
-async function iniciarPartidaNueva() {
-  cambiarEstado(ESTADOS.CARGANDO);
-  try {
-    await cargarRecursosParaNivel(1);
-    reiniciarPartida();
-    menuOne = 1;
-    cambiarEstado(ESTADOS.JUGANDO);
-  } catch (error) {
-    errorCargaRecursos = error.message;
-    console.error(error);
-    volverAlMenu();
-  }
+function iniciarPartidaNueva() {
+  reiniciarPartida();
+  menuOne = 1;
+  cambiarEstado(ESTADOS.JUGANDO);
 }
 
 function volverAlMenu() {
@@ -86,25 +77,16 @@ function alternarPausa() {
   }
 }
 
-async function avanzarNivel() {
+function avanzarNivel() {
   if (estadoJuego !== ESTADOS.NIVEL_COMPLETADO) return;
 
-  const siguienteNivel = nivel + 1;
-  cambiarEstado(ESTADOS.CARGANDO);
-  try {
-    await cargarRecursosParaNivel(siguienteNivel);
-    obstaculos.length = 0;
-    contadorEfecto = 0;
-    pasar_nivel = false;
-    nivel_bandera = true;
-    nivel = siguienteNivel;
-    mision = mision_general();
-    cambiarEstado(ESTADOS.JUGANDO);
-  } catch (error) {
-    errorCargaRecursos = error.message;
-    console.error(error);
-    cambiarEstado(ESTADOS.NIVEL_COMPLETADO);
-  }
+  obstaculos.length = 0;
+  contadorEfecto = 0;
+  pasar_nivel = false;
+  nivel_bandera = true;
+  nivel++;
+  mision = mision_general();
+  cambiarEstado(ESTADOS.JUGANDO);
 }
 
 function dibujarNivelActual() {
@@ -230,11 +212,6 @@ function dibujarDerrota() {
 }
 
 function draw() {
-  if (estadoJuego === ESTADOS.CARGANDO) {
-    dibujarCargaRecursos();
-    return;
-  }
-
   if (estadoJuego === ESTADOS.MENU) {
     velocidadGeneral = 0;
     drawMenu();

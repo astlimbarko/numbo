@@ -10,7 +10,6 @@ Este archivo resume el avance real del proyecto. Una tarea se marca con `[x]` de
 - [x] Usar `p5.js` y `p5.sound` localmente.
 - [x] Usar la distribución minimizada de `p5.js` para acelerar la carga web.
 - [x] Activar compresión y caché segura para la publicación web.
-- [x] Cargar inicialmente solo el menú y descargar cada nivel cuando sea necesario.
 - [x] Actualizar la información del autor.
 - [x] Organizar los estados del juego y el reinicio de partida.
 - [x] Corregir y probar el motor matemático.
