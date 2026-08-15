@@ -9,6 +9,7 @@ const ESTADOS = Object.freeze({
 });
 
 let estadoAntesDePausa = ESTADOS.JUGANDO;
+let botonPausaHoverAnterior = null;
 
 function detenerMovimiento() {
   moverDerecha = false;
@@ -76,6 +77,7 @@ function volverAlMenu() {
 }
 
 function alternarPausa() {
+  botonPausaHoverAnterior = null;
   if (estadoJuego === ESTADOS.JUGANDO) {
     estadoAntesDePausa = estadoJuego;
     pausaActiva = true;
@@ -185,10 +187,80 @@ function dibujarPanelEstado(titulo, lineas) {
   lineas.forEach((linea, indiceLinea) => text(linea, width / 2, y + 88 + indiceLinea * 28));
 }
 
+function dibujarDatoPausa(etiqueta, valor, x) {
+  push();
+  stroke(66, 27, 122);
+  strokeWeight(3);
+  fill(255, 211, 54);
+  rect(x, 145, 128, 55, 11);
+  noStroke();
+  fill(77, 31, 135);
+  textAlign(CENTER, CENTER);
+  textFont('Arial Black');
+  textSize(11);
+  text(etiqueta.toUpperCase(), x + 64, 158);
+  textSize(24);
+  text(valor, x + 64, 181);
+  pop();
+}
+
+function ajustarTextoPausa(texto, maximo, tamanoInicial, tamanoMinimo) {
+  let tamano = tamanoInicial;
+  textSize(tamano);
+  while (tamano > tamanoMinimo && textWidth(texto) > maximo) {
+    tamano -= 1;
+    textSize(tamano);
+  }
+}
+
+function dibujarBotonPausa(texto, x, y, ancho, alto, principal) {
+  const encima = mouseX >= x && mouseX <= x + ancho && mouseY >= y && mouseY <= y + alto;
+  push();
+  stroke(55, 22, 103);
+  strokeWeight(3);
+  if (principal) fill(encima ? color(255, 226, 95) : color(255, 202, 44));
+  else fill(encima ? color(178, 112, 239) : color(151, 75, 218));
+  rect(x, y, ancho, alto, 11);
+  noStroke();
+  fill(principal ? color(62, 27, 112) : color(255));
+  textAlign(CENTER, CENTER);
+  textFont('Arial Black');
+  ajustarTextoPausa(texto, ancho - 30, 17, 12);
+  text(texto, x + ancho / 2, y + alto / 2 + 1);
+  pop();
+  return encima;
+}
+
 function dibujarPausa() {
-  dibujarPanelEstado(traducir('pausa'), [`${traducir('nivel')}: ${nivel}`, `${traducir('aciertos')}: ${Acertadas}`]);
-  dibujarBoton(traducir('continuar'), 180, 220, 240, 42);
-  dibujarBoton(traducir('volverMenu'), 180, 275, 240, 42);
+  push();
+  noStroke();
+  fill(28, 13, 48, 105);
+  rect(0, 0, width, height);
+  stroke(57, 23, 108);
+  strokeWeight(5);
+  fill(104, 38, 179);
+  rect(125, 64, 350, 282, 22);
+  noStroke();
+  fill(139, 55, 218);
+  rect(142, 78, 316, 55, 15);
+  fill(255);
+  textAlign(CENTER, CENTER);
+  textFont('Arial Black');
+  ajustarTextoPausa(traducir('pausa'), 285, 29, 20);
+  text(traducir('pausa'), width / 2, 105);
+  dibujarDatoPausa(traducir('nivel'), nivel, 162);
+  dibujarDatoPausa(traducir('aciertos'), Acertadas, 310);
+  const sobreContinuar = dibujarBotonPausa(traducir('continuar'), 180, 220, 240, 42, true);
+  const sobreMenu = dibujarBotonPausa(traducir('volverMenu'), 180, 275, 240, 42, false);
+  const botonActual = sobreContinuar ? 'continuar' : (sobreMenu ? 'menu' : null);
+  if (botonActual !== botonPausaHoverAnterior && botonActual !== null) reproducirSonidoHoverMenu();
+  botonPausaHoverAnterior = botonActual;
+  fill(230, 216, 252);
+  noStroke();
+  textFont('Arial');
+  textSize(11);
+  text('ESC', width / 2, 331);
+  pop();
 }
 
 function dibujarNivelCompletado() {
