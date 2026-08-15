@@ -1,6 +1,6 @@
 # Ruta de trabajo de Numbo
 
-Este es el checklist operativo y actualizado del proyecto. `PLAN_TRABAJO.md` conserva el plan inicial como referencia historica; las especificaciones detalladas estan en `docs/specs/`.
+Este es el checklist operativo y actualizado del proyecto. `PLAN_TRABAJO.md` conserva el plan inicial como referencia historica; las especificaciones principales estan en `spec/`.
 
 Una tarea se marca `[X]` solamente cuando fue implementada, probada, aprobada y guardada en Git. Las tareas se trabajan de una en una.
 
@@ -41,7 +41,8 @@ Una tarea se marca `[X]` solamente cuando fue implementada, probada, aprobada y 
 ## Version 1 - Jugabilidad y equilibrio
 
 [X] Definir en las especificaciones porcentajes y rangos de la progresion matematica por nivel
-[ ] Implementar nivel 1 solo con sumas; nivel 2 con sumas, restas y algunos negativos; nivel 3 con suma, resta, negativos y apariciones ocasionales de multiplicacion y division
+[X] Implementar nivel 1 solo con sumas; nivel 2 con sumas, restas y algunos negativos; nivel 3 con suma, resta, negativos y apariciones ocasionales de multiplicacion y division
+[ ] Reemplazar la confirmacion entre niveles por una transicion automatica de pintura en nivel 1 a 2 y nivel 2 a 3
 [ ] Probar y equilibrar la velocidad definitiva de los tres niveles
 [ ] Revisar frecuencia, legibilidad y dificultad de las operaciones por nivel
 [ ] Revisar mapas, parallax, transiciones y requisitos para completar cada nivel

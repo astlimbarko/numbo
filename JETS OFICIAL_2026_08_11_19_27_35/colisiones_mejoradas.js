@@ -149,6 +149,7 @@ function comprobarColisiones() {
     if (obstaculo.colisionada) continue;
     if (!detectarColision(obstaculo, centroPersonajeX, centroPersonajeY, radioHitbox)) continue;
 
+    const misionAnterior = mision;
     obstaculo.colisionada = true;
     if (obstaculo.resultado === mision) {
       Acertadas++;
@@ -163,6 +164,12 @@ function comprobarColisiones() {
     }
     obstaculos.splice(i, 1);
     contadorEfecto = duracionEfecto;
+
+    // Las operaciones restantes fueron calculadas para la misión anterior.
+    if (obstaculo.resultado === misionAnterior) {
+      obstaculos.length = 0;
+      break;
+    }
   }
 
   if (contadorEfecto > 0) {
