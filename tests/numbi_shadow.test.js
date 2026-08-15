@@ -14,5 +14,5 @@ assert.ok(
   numbi.indexOf('dibujarSombraNumbi();') < numbi.indexOf('image(imgs[indice]'),
   'la sombra debe dibujarse detrás del personaje'
 );
-assert.match(html, /numbi\.js\?v=20260815-shadow1/, 'el navegador debe descargar la nueva versión');
+assert.match(html, /numbi\.js\?v=20260815-wind3/, 'el navegador debe descargar la nueva versión');
 console.log('OK: sombra de Numbi fija en el suelo y detrás del personaje');

@@ -40,9 +40,63 @@ function dibujarSombraNumbi() {
   pop();
 }
 
+function dibujarVientoAmbienteNumbi() {
+  const movimientoHorizontal = moverDerecha !== moverIzquierda;
+  if (nivel !== 3 || estadoJuego !== ESTADOS.JUGANDO || movimientoHorizontal) return;
+
+  const anclaX = posX + 18;
+  push();
+  noFill();
+  strokeCap(ROUND);
+  for (let i = 0; i < 4; i++) {
+    const oscilacion = sin((frameCount + i * 11) * 0.18) * 2;
+    const y = posY + 24 + i * 13 + oscilacion;
+    const longitud = 18 + (i % 2) * 7;
+
+    stroke(75, 78, 82, 105 - i * 10);
+    strokeWeight(1.4);
+    line(anclaX, y, anclaX - longitud, y + oscilacion * 0.3);
+
+    stroke(20, 22, 25, 60 - i * 6);
+    strokeWeight(0.8);
+    line(anclaX - 5, y + 2, anclaX - longitud - 5, y + 3);
+  }
+  pop();
+}
+
+function dibujarVientoNumbi() {
+  const movimientoHorizontal = moverDerecha !== moverIzquierda;
+  if (nivel !== 3 || estadoJuego !== ESTADOS.JUGANDO || !movimientoHorizontal) return;
+
+  const direccion = moverDerecha ? 1 : -1;
+  const anclaX = moverDerecha ? posX + 20 : posX + ancho_sp - 20;
+
+  push();
+  noFill();
+  strokeCap(ROUND);
+  for (let i = 0; i < 6; i++) {
+    const oscilacion = sin((frameCount + i * 7) * 0.28) * 3;
+    const y = posY + 18 + i * 11 + oscilacion;
+    const longitud = 36 + (i % 3) * 10;
+    const extremoX = anclaX - direccion * longitud;
+
+    stroke(240, 253, 255, 230 - i * 12);
+    strokeWeight(i % 2 === 0 ? 3 : 2);
+    line(anclaX, y, extremoX, y + oscilacion * 0.35);
+
+    stroke(45, 190, 255, 175 - i * 10);
+    strokeWeight(1);
+    line(anclaX - direccion * 5, y + 3, extremoX - direccion * 7, y + 4);
+  }
+  pop();
+}
+
 function drawNumbi() {
   // Generar y dibujar hitbox
   hitboxSP();
+  // Estela visual del nivel 3, detrás del sprite y sin alterar su hitbox.
+  dibujarVientoNumbi();
+  dibujarVientoAmbienteNumbi();
   // La sombra sigue al personaje horizontalmente y permanece sobre el suelo al saltar.
   dibujarSombraNumbi();
   noFill(); 
