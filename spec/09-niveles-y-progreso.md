@@ -51,3 +51,16 @@ Los porcentajes y rangos exactos estan definidos en `04-motor-matematico.md`.
 - El nivel y la mision mostrados son correctos.
 - Ganar no incrementa el nivel a 4.
 - Reiniciar devuelve el juego exactamente al comienzo del nivel 1.
+
+## Revision de mapas y transiciones
+
+- El primer plano aumenta de forma efectiva entre los niveles 1, 2 y 3.
+- Las capas conservan movimiento cero durante pausa, derrota, victoria y transicion.
+- Las nubes del nivel 3 se duplican a la izquierda porque avanzan hacia la derecha.
+- Las coordenadas de las nubes vuelven a cero al completar un ancho y no crecen indefinidamente.
+- Las metas acumuladas permanecen en 10, 20 y 30 aciertos.
+- Los niveles 1 y 2 terminan mediante la transicion automatica de pintura.
+- El nivel 3 termina en victoria y nunca crea un nivel 4.
+- Cada cambio de nivel elimina operaciones anteriores y crea una mision nueva.
+
+Estas reglas estan cubiertas por una prueba automatica de integridad.

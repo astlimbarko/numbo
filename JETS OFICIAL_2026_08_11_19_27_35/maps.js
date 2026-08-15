@@ -192,9 +192,9 @@ function mapa3(){
   
     // Nubes
   image(nubes, nubes_x, 0);
-  image(nubes, nubes_x + nubes.width, 0); // Duplicación
+  image(nubes, nubes_x - nubes.width, 0); // Copia a la izquierda para desplazamiento hacia la derecha
   image(nubes2, nubes2_x, 0);
-  image(nubes2, nubes2_x + nubes2.width, 0); // 
+  image(nubes2, nubes2_x - nubes2.width, 0);
   
   // Montaña 3
   image(monta3, monta3_x, 0);
@@ -276,11 +276,11 @@ function mapa3(){
     monta3_x = 0;
   }
 
-  if (nubes_x <= -nubes.width) {
+  if (nubes_x >= nubes.width) {
     nubes_x = 0;
   }
   
-   if (nubes2_x <= -nubes2.width) {
+   if (nubes2_x >= nubes2.width) {
     nubes2_x = 0;
   }
   

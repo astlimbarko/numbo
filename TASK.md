@@ -48,7 +48,7 @@ Una tarea se marca `[X]` solamente cuando fue implementada, probada, aprobada y 
 [X] Reemplazar la confirmacion entre niveles por una transicion automatica de pintura en nivel 1 a 2 y nivel 2 a 3
 [X] Probar y equilibrar la velocidad definitiva de los tres niveles
 [X] Revisar frecuencia, legibilidad y dificultad de las operaciones por nivel
-[ ] Revisar mapas, parallax, transiciones y requisitos para completar cada nivel
+[X] Revisar mapas, parallax, transiciones y requisitos para completar cada nivel
 [ ] Completar manualmente los niveles 1, 2 y 3, incluyendo victoria, derrota y reinicio
 [ ] Decidir si Numbo guardara el progreso de niveles
 
