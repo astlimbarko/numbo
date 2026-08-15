@@ -17,6 +17,7 @@ function preload() {
   //barra superior
   corazonImg = loadImage("img/barra_superior/corazon.png"); 
   copa = loadImage("img/barra_superior/copa.png");
+  hallar_m = loadImage("img/barra_superior/mision.png");
   numberImg = loadImage("img/num.png")
   
   imgMenu = loadImage('img/scmenu.png'); //menu

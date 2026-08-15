@@ -36,22 +36,7 @@ function dibujarPanelMision() {
   noFill();
   line(xPanel + 11, yPanel + 5, xPanel + anchoPanel - 11, yPanel + 5);
 
-  noStroke();
-  textAlign(LEFT, CENTER);
-  textFont('Arial Black');
-  textSize(10);
-  fill(255, 190, 52);
-  text('MISIÓN', xPanel + 15, yPanel + 15);
-
-  textSize(23);
-  fill(54, 20, 104, 150);
-  text('HALLAR', xPanel + 17, yPanel + 39);
-
-  stroke(82, 34, 145);
-  strokeWeight(2);
-  fill(255);
-  text('HALLAR', xPanel + 15, yPanel + 37);
-  noStroke();
+  image(hallar_m, xPanel + 7, yPanel + 8, 132, 43);
 
   push();
   translate(xNumero + anchoNumero / 2, yNumero + altoNumero / 2);
