@@ -100,7 +100,6 @@ function dibujarNivelActual() {
   else dibujarNumbiEstatico();
 }
 function dibujarNumbiEstatico() {
-  dibujarSombraNumbi();
   const cuadro = imgs[Math.min(indice, imgs.length - 1)];
   if (!cuadro) return;
 

@@ -32,23 +32,7 @@ function setupNumbi() {
   }
 }
 
-function dibujarSombraNumbi() {
-  const centroX = posX + ancho_sp / 2;
-  const sueloY = posYInicial + 77;
-
-  push();
-  noStroke();
-  fill(26, 24, 38, 22);
-  ellipse(centroX, sueloY, 56, 13);
-  fill(26, 24, 38, 34);
-  ellipse(centroX, sueloY, 46, 9);
-  fill(26, 24, 38, 24);
-  ellipse(centroX, sueloY, 34, 6);
-  pop();
-}
-
 function drawNumbi() {
-  dibujarSombraNumbi();
   // Generar y dibujar hitbox
   hitboxSP();
   noFill(); 
