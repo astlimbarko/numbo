@@ -1,0 +1,41 @@
+name: Publicar Numbo en GitHub Pages
+
+on:
+  push:
+    branches:
+      - codex/desarrollo-numbo
+    paths:
+      - 'JETS OFICIAL_2026_08_11_19_27_35/**'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v6
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparar archivos de Numbo
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: './JETS OFICIAL_2026_08_11_19_27_35'
+
+      - name: Publicar sitio
+        id: deployment
+        uses: actions/deploy-pages@v4
